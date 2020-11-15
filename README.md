@@ -3,14 +3,16 @@ Have you ever find it difficult for you to learn about your specific subject in 
 
 This DevGuide project is our effort to eliminate these problem. Our project plans to help you consider your carreer path and also give you the right direction on what you need to learn right now and in the future. 
 
-To get the latest information and updates on our project, head over to our [website](https://devguide-web.github.io) !
 
 ## Background
 ### Charts
+#### Survey Result
 ![Image 1](./assets/chart1.jpeg)
 ![Image 2](./assets/chart2.jpeg)
 ![Image 3](./assets/chart3.jpeg)
-![Image 4](./assets/web-route.png)
+
+#### Usecase Diagram
+![Image 4](./assets/user-route.png)
 
 ## Planned Features
 ### Main Features
