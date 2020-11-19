@@ -1,5 +1,5 @@
 # DevGuide
-[Report Phase 1](https://github.com/DevGuide-Web/DevGuide/blob/main/Report Phase 1.md)  |  [Report Phase 2 (Video)](https://drive.google.com/file/d/1fbTccUKC1qNMurfW0se3pkcrhMlsuQ4V/view?usp=sharing)
+[Report Phase 1](https://github.com/DevGuide-Web/DevGuide/blob/main/Report%Phase%1.md)  |  [Report Phase 2 (Video)](https://drive.google.com/file/d/1fbTccUKC1qNMurfW0se3pkcrhMlsuQ4V/view?usp=sharing)
 
 Have you ever find it difficult for you to learn about your specific subject in computer science ? We do. Subject material are usually spread through the internet and sometimes difficult to search. Also, some article are hard to read or have quite advanced difficulties. 
 
