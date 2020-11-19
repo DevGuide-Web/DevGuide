@@ -19,6 +19,8 @@ This DevGuide project is our effort to eliminate these problem. Our project plan
 - [ ] Solution voting
 - [ ] Mobile UI
 
+## Mockup Design
+[Adobe XD](https://xd.adobe.com/view/1c2a7763-e778-4279-bb00-5bc548ea7973-4979/)
 
 ## Our Team
 - Akbar Maulana Alfatih ([@MosQyy](https://www.github.com/MosQyy) / 1313619003)
