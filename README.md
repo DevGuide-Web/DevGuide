@@ -1,17 +1,9 @@
 # DevGuide
+[Report Phase 1](https://github.com/DevGuide-Web/DevGuide/blob/main/Mini%20Report.md)  |  [Report Phase 2 (Video)](https://drive.google.com/file/d/1fbTccUKC1qNMurfW0se3pkcrhMlsuQ4V/view?usp=sharing)
+
 Have you ever find it difficult for you to learn about your specific subject in computer science ? We do. Subject material are usually spread through the internet and sometimes difficult to search. Also, some article are hard to read or have quite advanced difficulties. 
 
 This DevGuide project is our effort to eliminate these problem. Our project plans to help you consider your carreer path and also give you the right direction on what you need to learn right now and in the future. 
-
-
-## Charts
-### Survey Result
-![Image 1](./assets/chart1.jpeg)
-![Image 2](./assets/chart2.jpeg)
-![Image 3](./assets/chart3.jpeg)
-
-### Usecase Diagram
-![Image 4](./assets/user-route.png)
 
 ## Planned Features
 ### Main Features
