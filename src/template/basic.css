@@ -1,0 +1,40 @@
+.firstScreen {
+  background-image: url('../img/background.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.logRoute {
+  background-color: #ffcc67;
+  text-align: center;
+  padding: 60px;
+  border-radius: 35px;
+  border-color: black;
+  border-width: 8px;
+  border-style: solid;
+}
+.loginButton-Route,
+.registerButton-Route,
+.adminButton-Route {
+  cursor: pointer;
+  width: 150px;
+  padding: 6px;
+  background-color: black;
+  color: #ffcc67;
+  font-weight: bold;
+  border-radius: 35px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+}
+.loginButton-Route:hover,
+.registerButton-Route:hover,
+.adminButton-Route:hover {
+  background-color: #ffcc67;
+  color: black;
+}

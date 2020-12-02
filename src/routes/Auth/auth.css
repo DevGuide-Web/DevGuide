@@ -1,0 +1,43 @@
+.login-auth,
+.register-auth,
+.admin-auth {
+  background-image: url('../../img/background2.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.formLogin,
+.formRegister,
+.formAdmin {
+  background-color: #ffcc67;
+  text-align: center;
+  padding: 80px;
+  border-radius: 35px;
+  border-color: black;
+  border-width: 8px;
+  border-style: solid;
+}
+.crusialButton {
+  cursor: pointer;
+  width: 130px;
+  padding: 6px;
+  background-color: black;
+  color: #ffcc67;
+  font-weight: bold;
+  border-radius: 35px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+}
+.crusialButton:hover {
+  background-color: #ffcc67;
+  color: black;
+}
+.crusialInput {
+  padding: 10px;
+}
