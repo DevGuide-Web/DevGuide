@@ -1,7 +1,6 @@
 from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
-from annoying.fields import AutoOneToOneField
 
 class AccManager(BaseUserManager):
 	def create_user(self, email, password=None):
@@ -22,6 +21,7 @@ class AccManager(BaseUserManager):
 			password=password,
 		)
 		user.is_admin = True
+		user.is_staff = True
 		user.save(using=self._db)
 		return user
 
@@ -31,6 +31,8 @@ class Acc(AbstractBaseUser):
 	date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
 	is_admin = models.BooleanField(default=False)
 	last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
+	is_staff = models.BooleanField(default=False)
+
 
 	USERNAME_FIELD = 'email'
 

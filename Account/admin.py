@@ -6,7 +6,7 @@ from .models import Acc, Biodata
 # Register your models here.
 
 class AccountAdmin(UserAdmin):
-    list_display = ('pk', 'email', 'last_login', 'date_joined', 'is_admin',)
+    list_display = ('pk', 'email', 'last_login', 'date_joined', 'is_admin','is_staff')
     search_fields = ('pk', 'email',)
 
     filter_horizontal = ()
