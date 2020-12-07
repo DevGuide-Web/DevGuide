@@ -3,21 +3,7 @@ from rest_framework import serializers
 from .models import Acc
 
 
-# class LoginSerializer(serializers.ModelSerializer):
-# 	class Meta:
-# 		model = Account
-# 		fields = ['email', 'password',]
-
-# 		extra_kwargs = {'password': {'write_only': True}}
-
-# 	def validate(self, data):
-# 		password = data.get('password')
-# 		email = data.get('email')
-
-
 class RegistrationSerializer(serializers.ModelSerializer):
-
-	
 
 	class Meta:
 		model = Acc
@@ -28,7 +14,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
 
 	def	save(self):
-
 		account = Acc(
 					email=self.validated_data['email'],
 				)
