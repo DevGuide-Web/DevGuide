@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'Comment',
     'api',
     'Content',
+    'rest_framework',
+    'rest_framework.authtoken'
+
 ]
 
 MIDDLEWARE = [
@@ -90,6 +93,7 @@ DATABASES = {
         'PORT': config('PORT'),
         'USER': config('USER'),
         'PASSWORD': config('PASSWORD'),
+        'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
     }
 }
 
@@ -131,3 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
