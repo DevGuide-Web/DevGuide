@@ -47,3 +47,5 @@ class SubTitle4(models.Model):
     def __str__(self):
         return self.Title
 
+    def get_title(self):
+        return self.Title
