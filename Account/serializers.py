@@ -29,7 +29,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Acc
-		fields = ['email', 'password', 'repassword']
+		fields = ['email', 'username', 'password', 'repassword']
 		extra_kwargs = {
 				'password': {'write_only': True},
 		}	
@@ -38,6 +38,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
 	def	save(self):
 		account = Acc(
 					email=self.validated_data['email'],
+					username=self.validated_data['username']
+
 				)
 		password = self.validated_data['password']
 		repassword = self.validated_data['repassword']
@@ -49,10 +51,20 @@ class RegistrationSerializer(serializers.ModelSerializer):
 		return account
 
 class BiodataSerializer(serializers.ModelSerializer):
+	email = serializers.SerializerMethodField('get_email')
+	username = serializers.SerializerMethodField('get_username')
 	class Meta:
 		model = Biodata
-		fields = ['fullname', 'username', 'interest']
+		fields = ['fullname', 'email', 'username', 'interest']
+	
+	def get_email(request, Biodata_acc):
+		email = Biodata_acc.acc.email
+		return email
 
-class Test(serializers.Serializer):
-	title = serializers.CharField(required=True)
-	slug = serializers.SlugField(required=True)
+	def get_username(request, Biodata_acc):
+		username = Biodata_acc.acc.username
+		return username
+
+class AdminSerializer(serializers.Serializer):
+	email = serializers.EmailField(required=True)
+	password = serializers.CharField(required=True)

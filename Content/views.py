@@ -2,13 +2,12 @@ from rest_framework import serializers
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth import authenticate
-from rest_framework.views import APIView
 from rest_framework import status
 
 
 from .serializers import LearningPathSerializer,SubTitle1Serializer, SubTitle2Serializer, SubTitle3Serializer, SubTitle4Serializer
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAdminUser
 from .models import LearningPath, SubTitle1, SubTitle2, SubTitle3, SubTitle4
 
 

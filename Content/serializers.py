@@ -88,3 +88,4 @@ class SubTitle4Serializer(serializers.ModelSerializer):
     def get_sub_title3_slug(self, sub_title4):
         SubTitle3Slug = sub_title4.SubTitle3.slug
         return SubTitle3Slug
+
