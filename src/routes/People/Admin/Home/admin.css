@@ -1,15 +1,31 @@
-.firstScreen {
-  background-image: url('../img/background.jpg');
+.adminHome {
+  background-image: url('../../../../img/admin_background.jpg');
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center;
   height: 100vh;
+}
+.page-header {
+  background-color: #ffcc67;
+  height: 70px;
+  text-align: center;
+  padding: 15px;
+}
+.page-title {
+  margin-left: auto;
+  margin-right: auto;
+  width: 5.5em;
+  font-size: 40px;
+  font-weight: bolder;
+}
+.page-content {
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.logRoute {
+.page-link {
   background-color: #ffcc67;
   text-align: center;
   padding: 55px;
@@ -18,9 +34,9 @@
   border-width: 8px;
   border-style: solid;
 }
-.loginButton-Route,
-.registerButton-Route,
-.adminButton-Route {
+.add-button,
+.edit-button,
+.logout-button {
   cursor: pointer;
   width: 150px;
   padding: 6px;
@@ -32,12 +48,12 @@
   border-width: 3px;
   border-style: solid;
 }
-.loginButton-Route:hover,
-.registerButton-Route:hover {
+.add-button:hover,
+.edit-button:hover {
   background-color: #ffcc67;
   color: black;
 }
-.adminButton-Route:hover {
-  background-color: rgb(23, 221, 23);
+.logout-button:hover {
+  background-color: rgb(253, 36, 36);
   color: black;
 }

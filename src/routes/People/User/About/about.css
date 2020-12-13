@@ -18,6 +18,9 @@ h1 {
   border-width: 8px;
   padding: 120px;
 }
+.aboutPage p {
+  font-size: 20px;
+}
 .contactPart {
   background-color: #ffcc67;
   border-radius: 50px;

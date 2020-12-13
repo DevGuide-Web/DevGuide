@@ -10,8 +10,8 @@ export default function About() {
         <div className='aboutPart'>
           <h1>About</h1>
           <p>
-            DevGuide is a Web Application that <br></br> help Developer to have{' '}
-            <br></br> Learning Path
+            DevGuide is a Web Application <br></br> that help Developer to have
+            Learning Path
           </p>
         </div>
         <div className='contactPart'>
