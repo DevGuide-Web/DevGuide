@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from rest_framework import status
 
 
-from .serializers import LearningPathSerializer,SubTitle1Serializer, SubTitle2Serializer, SubTitle3Serializer, SubTitle4Serializer
+from .serializers import HomeSerializer, LearningPathSerializer,SubTitle1Serializer, SubTitle2Serializer, SubTitle3Serializer, SubTitle4Serializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAdminUser
 from .models import LearningPath, SubTitle1, SubTitle2, SubTitle3, SubTitle4
@@ -15,7 +15,6 @@ from .models import LearningPath, SubTitle1, SubTitle2, SubTitle3, SubTitle4
 def LearningPathList(request):
     if request.method == 'GET':
         serializer = LearningPathSerializer(LearningPath.objects.all(), many=True)
-        print(serializer.data)
         return Response(serializer.data)
     
 @api_view(['GET', ])
@@ -31,7 +30,6 @@ def SubTitle1List(request, LearningPathSlug):
 
     if request.method == 'GET':
         serializer = SubTitle1Serializer(sub_title1, many=True)
-        print(serializer.data)
         return Response(serializer.data)
 
 
@@ -48,7 +46,6 @@ def SubTitle2List(request, LearningPathSlug, SubTitle1Slug):
 
     if request.method == 'GET':
         serializer = SubTitle2Serializer(sub_title2, many=True)
-        print(serializer.data)
         return Response(serializer.data)
 
 @api_view(['GET', ])
@@ -65,7 +62,6 @@ def SubTitle3List(request, LearningPathSlug, SubTitle1Slug, SubTitle2Slug):
 
     if request.method == 'GET':
         serializer = SubTitle3Serializer(sub_title3, many=True)
-        print(serializer.data)
         return Response(serializer.data)
 
 @api_view(['GET', ])
@@ -83,6 +79,12 @@ def SubTitle4List(request, LearningPathSlug, SubTitle1Slug, SubTitle2Slug, SubTi
 
     if request.method == 'GET':
         serializer = SubTitle4Serializer(sub_title4, many=True)
-        print(serializer.data)
         return Response(serializer.data)
-        
+    
+@api_view(['GET', ])
+def HomePage(request):
+    if request.method == "GET":
+        sub_title4 = SubTitle4.objects.order_by('-date_created')
+        serializer = HomeSerializer(sub_title4, many=True)
+        return Response(serializer.data)
+
