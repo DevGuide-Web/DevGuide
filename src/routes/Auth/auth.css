@@ -1,6 +1,6 @@
 .login-auth,
 .register-auth,
-.admin-auth {
+.forgotPW-auth {
   background-image: url('../../img/background2.jpg');
   background-repeat: no-repeat;
   background-size: auto;
@@ -13,7 +13,7 @@
 }
 .formLogin,
 .formRegister,
-.formAdmin {
+.formForgotPW {
   background-color: #ffcc67;
   text-align: center;
   padding: 80px;

@@ -17,11 +17,6 @@ export default function DevGuide() {
         <Link to='/register'>
           <button className='registerButton-Route'>Register</button>
         </Link>
-        <br></br>
-        <br></br>
-        <Link to='/login/admin'>
-          <button className='adminButton-Route'>Login as Admin</button>
-        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,53 @@
+.courseDiv {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-top: 100px;
+}
+.courseDetail {
+  background-color: #ffcc67;
+  width: 50%;
+  text-align: center;
+  padding: 80px;
+  border-radius: 50px;
+}
+.subDetail {
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  background-color: #da9100;
+  padding: 50px;
+  border-radius: 30px;
+  margin-top: 4rem;
+}
+.discussDiv {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-top: 100px;
+}
+.discussDetail {
+  background-color: #da9100;
+  width: 50%;
+  text-align: center;
+  padding: 80px;
+  border-radius: 50px;
+}
+.articleDiv,
+.videoDiv,
+.sampleDiv {
+  border-width: 5px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 30px;
+  padding: 8px;
+}
+.articleDiv h3,
+.videoDiv h3,
+.sampleDiv h3 {
+  margin-left: 20px;
+}

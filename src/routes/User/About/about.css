@@ -1,0 +1,37 @@
+.aboutPage {
+  display: flex;
+  height: 89vh;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  flex-direction: row;
+  font-size: 16px;
+}
+h1 {
+  font-size: 32px;
+}
+.aboutPart {
+  background-color: #ffcc67;
+  border-radius: 50px;
+  border-style: solid;
+  border-color: black;
+  border-width: 8px;
+  padding: 120px;
+}
+.aboutPage p {
+  font-size: 20px;
+}
+.contactPart {
+  background-color: #ffcc67;
+  border-radius: 50px;
+  border-style: solid;
+  border-color: black;
+  border-width: 8px;
+  padding: 120px;
+}
+.emailContact {
+  text-align: justify;
+}
+.aboutText {
+  text-align: justify;
+}

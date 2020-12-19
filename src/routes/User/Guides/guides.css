@@ -1,0 +1,46 @@
+.guides-page {
+  display: flex;
+  flex-direction: column;
+  height: 88vh;
+  align-items: center;
+  justify-content: center;
+}
+.guides-content {
+  background-color: #ffcc67;
+  border-radius: 50px;
+  border-width: 6px;
+  border-color: black;
+  border-style: solid;
+  padding: 50px;
+  width: 50%;
+}
+.guides-title {
+  display: flex;
+  justify-content: center;
+}
+.guides-title h1 {
+  font-size: 42px;
+}
+.guides-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.guides-detail button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  width: 38%;
+  padding: 10px;
+}
+.guides-detail a {
+  color: #ffcc67;
+  text-decoration: none;
+}
+.guides-detail a:hover {
+  color: black;
+}
