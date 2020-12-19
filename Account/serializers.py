@@ -68,3 +68,8 @@ class BiodataSerializer(serializers.ModelSerializer):
 class AdminSerializer(serializers.Serializer):
 	email = serializers.EmailField(required=True)
 	password = serializers.CharField(required=True)
+
+class changePasswordSerializer(serializers.Serializer):
+	password = serializers.CharField(required=True)
+	repassword = serializers.CharField(required=True)
+	old_password = serializers.CharField(required=True)
