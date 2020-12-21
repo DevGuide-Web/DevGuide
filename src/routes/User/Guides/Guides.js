@@ -18,25 +18,33 @@ export default function Guides() {
           </div>
           <IconContext.Provider value={{ size: '30px' }}>
             <div className='guides-detail'>
-              <button className='crusialButton'>
-                <AiIcons.AiFillAndroid />
-                <Link to='/guides/course'>Android Developer</Link>
-              </button>
+              <Link to='/guides/course'>
+                <button className='crusialButton'>
+                  <AiIcons.AiFillAndroid />
+                  Android Developer
+                </button>
+              </Link>
               <br></br>
-              <button className='crusialButton'>
-                <FaIcons.FaGlobe />
-                Website Developer
-              </button>
+              <Link>
+                <button className='crusialButton'>
+                  <FaIcons.FaGlobe />
+                  Website Developer
+                </button>
+              </Link>
               <br></br>
-              <button className='crusialButton'>
-                <GiIcons.GiGamepad />
-                Game Developer
-              </button>
+              <Link>
+                <button className='crusialButton'>
+                  <GiIcons.GiGamepad />
+                  Game Developer
+                </button>
+              </Link>
               <br></br>
-              <button className='crusialButton'>
-                <AiIcons.AiFillApple />
-                iOS Developer
-              </button>
+              <Link>
+                <button className='crusialButton'>
+                  <AiIcons.AiFillApple />
+                  iOS Developer
+                </button>
+              </Link>
             </div>
           </IconContext.Provider>
         </div>

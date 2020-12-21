@@ -19,7 +19,7 @@ export default function About() {
         <div className='contactPart'>
           <h1>Contact</h1>
           <div className='emailContact'>
-            <p>Email : farhandewanta@gmail.com</p>
+            <p>Email : farhandewanta11@gmail.com</p>
             <p>Email : etrnal70@gmail.com</p>
             <p>Email : akbarma2002@gmail.com</p>
           </div>

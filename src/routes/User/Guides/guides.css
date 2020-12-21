@@ -33,13 +33,15 @@
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  font-size: 18px;
-  width: 38%;
-  padding: 10px;
-}
-.guides-detail a {
   color: #ffcc67;
   text-decoration: none;
+  width: 100%;
+}
+.guides-detail a {
+  font-size: 18px;
+  padding: 10px;
+  text-decoration: none;
+  width: 30%;
 }
 .guides-detail a:hover {
   color: black;

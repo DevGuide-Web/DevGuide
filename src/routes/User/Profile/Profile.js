@@ -16,7 +16,7 @@ export default function Profile() {
             <div className='profile-detail'>
               <h3>Username : ---</h3>
               <h3>Email : ---</h3>
-              <h3>Developer : ---</h3>
+              <h3>Interest : ---</h3>
               <div className='profile-function'>
                 <Link to='/profile/edit'>
                   <button className='crusialButton'>Edit Profile</button>

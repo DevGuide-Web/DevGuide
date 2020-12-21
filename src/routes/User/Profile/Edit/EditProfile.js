@@ -30,7 +30,7 @@ export default function EditProfile() {
                 placeholder='Type Here!'
                 className='editInput'
               ></input>
-              <h3>Developer</h3>
+              <h3>Interest</h3>
               <input
                 type='text'
                 placeholder='Type Here!'
