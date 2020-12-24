@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DevGuide from './template/DevGuide';
 import Login from './routes/Auth/Login';
 import Register from './routes/Auth/Register';
-import ForgotPassword from './routes/Auth/ForgotPassword';
 import ChangePassword from './routes/User/Profile/Edit/ChangePassword';
 import About from './routes/User/About/About';
-import Course from './routes/User/Guides/Course/Course';
 import Guides from './routes/User/Guides/Guides';
 import Home from './routes/User/Home/Home';
 import Profile from './routes/User/Profile/Profile';
 import EditProfile from './routes/User/Profile/Edit/EditProfile';
 import Suggest from './routes/User/Suggest/Suggest';
+import Android from './routes/User/Guides/Course/Android/Android';
+import IOS from './routes/User/Guides/Course/iOS/IOS';
+import Website from './routes/User/Guides/Course/Website/Website';
 
 function App() {
   return (
@@ -23,8 +24,7 @@ function App() {
           {/* User Auth */}
           <Route path='/login' exact component={Login} />
           <Route path='/register' exact component={Register} />
-          <Route path='/forgotPassword' exact component={ForgotPassword} />
-          {/* ! User Route !*/}
+          {/* ! User Route ! */}
           <Route path='/suggest' exact component={Suggest} />
           <Route path='/home' exact component={Home} />
           <Route path='/profile' exact component={Profile} />
@@ -35,8 +35,11 @@ function App() {
             component={ChangePassword}
           />
           <Route path='/guides' exact component={Guides} />
-          <Route path='/guides/course' exact component={Course} />
           <Route path='/about' exact component={About} />
+          {/* Course Route */}
+          <Route path='/guides/android' exact component={Android} />
+          <Route path='/guides/ios' exact component={IOS} />
+          <Route path='/guides/website' exact component={Website} />
         </Switch>
       </Router>
     </div>

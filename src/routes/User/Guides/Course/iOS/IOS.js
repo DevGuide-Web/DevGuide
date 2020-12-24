@@ -1,15 +1,15 @@
 import React from 'react';
-import NavBar from '../../../NavBar/NavBar';
+import NavBar from '../../../../NavBar/NavBar';
 import { Link } from 'react-router-dom';
-import './course.css';
+import '../course.css';
 
-export default function Course() {
+function IOS() {
   return (
     <div>
       <NavBar />
       <div className='courseDiv'>
         <div className='courseDetail'>
-          <h1>Android Developer Guidelines</h1>
+          <h1>iOS Developer Guidelines</h1>
           <div className='subDetail'>
             <h3>Sub Bab</h3>
             <h3>Course you can get :</h3>
@@ -35,3 +35,5 @@ export default function Course() {
     </div>
   );
 }
+
+export default IOS;

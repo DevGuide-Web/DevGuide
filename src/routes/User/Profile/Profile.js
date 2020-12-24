@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from '../../NavBar/NavBar';
 import { Link } from 'react-router-dom';
 import * as BiIcons from 'react-icons/bi';
 import { IconContext } from 'react-icons';
 import './profile.css';
+import Axios from 'axios';
 
 export default function Profile() {
+  const [fullname, getFullname] = useState('');
+  const [username, getUsername] = useState('');
+  const [email, getEmail] = useState('');
+  const [interest, getInterest] = useState('');
+
+  const [logOut, setLogOut] = useState('');
+
+  const goLogOut = () => {
+    if (localStorage.getItem('Authorization')) {
+      localStorage.clear();
+      setLogOut('/');
+    }
+  };
+
+  Axios.get('http://www.devguide.site/api/account/biodata/', {
+    headers: {
+      Authorization: localStorage.getItem('Authorization'),
+    },
+  }).then(response => {
+    getFullname(response.data.fullname);
+    getUsername(response.data.username);
+    getEmail(response.data.email);
+    getInterest(response.data.interest);
+  });
+
   return (
     <div>
       <NavBar />
@@ -14,9 +40,10 @@ export default function Profile() {
           <div className='profile-content'>
             <BiIcons.BiUserCircle />
             <div className='profile-detail'>
-              <h3>Username : ---</h3>
-              <h3>Email : ---</h3>
-              <h3>Interest : ---</h3>
+              <h3>Fullname : {fullname}</h3>
+              <h3>Username : {username}</h3>
+              <h3>Email : {email}</h3>
+              <h3>Interest : {interest}</h3>
               <div className='profile-function'>
                 <Link to='/profile/edit'>
                   <button className='crusialButton'>Edit Profile</button>
@@ -26,8 +53,10 @@ export default function Profile() {
                   <button className='crusialButton'>Change Password</button>
                 </Link>
                 <br></br>
-                <Link to='/'>
-                  <button className='LogOutButton'>Log Out</button>
+                <Link to={logOut}>
+                  <button className='LogOutButton' onClick={goLogOut}>
+                    Log Out
+                  </button>
                 </Link>
               </div>
             </div>
