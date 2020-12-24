@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as AiIcons from 'react-icons/ai';
 import * as FaIcons from 'react-icons/fa';
 import * as BsIcons from 'react-icons/bs';
+import * as MdIcons from 'react-icons/md';
 import Logo from '../../img/devguide.png';
 import './navbar.css';
 import { IconContext } from 'react-icons';
@@ -52,6 +53,12 @@ export default function NavBar() {
               <Link to='/profile'>
                 <AiIcons.AiFillProfile />
                 <span>Profile</span>
+              </Link>
+            </li>
+            <li className='navbar-items'>
+              <Link to='/questioner'>
+                <MdIcons.MdFeedback />
+                <span>Questioner</span>
               </Link>
             </li>
             <li className='navbar-items'>

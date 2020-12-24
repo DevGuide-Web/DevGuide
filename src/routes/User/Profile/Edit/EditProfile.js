@@ -58,13 +58,13 @@ export default function EditProfile() {
     <div>
       <NavBar />
       <div className='editprofile-page'>
-        <IconContext.Provider value={{ size: '250px' }}>
+        <IconContext.Provider value={{ size: '200px' }}>
           <div className='editprofile-content'>
             <Link to='/profile'>
               <button className='crusialButton'>Back</button>
             </Link>
-            <BiIcons.BiUserCircle />
             <div className='editprofile-detail'>
+              <BiIcons.BiUserCircle />
               <h3>Fullname</h3>
               <input
                 type='text'

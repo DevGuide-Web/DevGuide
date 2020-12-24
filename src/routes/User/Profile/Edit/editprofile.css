@@ -1,15 +1,16 @@
 .editprofile-page {
   display: flex;
   flex-direction: column;
-  height: 65vh;
+  height: 120vh;
   align-items: center;
   justify-content: center;
   text-align: center;
   margin-top: 100px;
+  margin-bottom: 10vh;
 }
 .editprofile-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: #ffcc67;
   border-color: black;
   border-style: solid;
@@ -32,6 +33,7 @@
   width: 70%;
   border-radius: 30px;
   margin-left: 100px;
+  margin-top: 50px;
   text-align: justify;
 }
 .editprofile-function {

@@ -13,6 +13,7 @@ import Suggest from './routes/User/Suggest/Suggest';
 import Android from './routes/User/Guides/Course/Android/Android';
 import IOS from './routes/User/Guides/Course/iOS/IOS';
 import Website from './routes/User/Guides/Course/Website/Website';
+import Questioner from './routes/User/Questioner/Questioner';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             component={ChangePassword}
           />
           <Route path='/guides' exact component={Guides} />
+          <Route path='/questioner' exact component={Questioner} />
           <Route path='/about' exact component={About} />
           {/* Course Route */}
           <Route path='/guides/android' exact component={Android} />
