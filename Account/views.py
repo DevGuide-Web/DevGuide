@@ -1,15 +1,13 @@
-from rest_framework import serializers
-from rest_framework import response
+from Utils.models import kuesionerModel
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth import authenticate
-from rest_framework.serializers import Serializer, raise_errors_on_nested_writes
-from rest_framework.views import APIView
 from .models import Acc, Biodata
 
-from .serializers import BiodataSerializer, RegistrationSerializer, LoginSerializer, changePasswordSerializer, AdminSerializer
+from .serializers import BiodataSerializer, RegistrationSerializer, LoginSerializer, biodataUpdateSerializer, changePasswordSerializer, AdminSerializer
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
+from Utils.models import appLog
 
 
 @api_view(['POST', ])
@@ -20,6 +18,8 @@ def registration_view(request):
 		data = {}
 		if serializer.is_valid():
 			account = serializer.save()
+			log = appLog.objects.create(user_id=account, activity=f"Account with username {account.username} has been created")
+			log.save()
 			data['response'] = 'successfully registered new user.'
 			data['pk'] = account.pk
 			# Token.objects.create(user=account)
@@ -31,9 +31,15 @@ def registration_view(request):
 			#make Biodata
 			bio = Biodata.objects.create(acc = account)
 			bio.save()
+
+			#make Kuesioner
+			kuesioner = kuesionerModel.objects.create(user_id=account)
+			kuesioner.save()
+
+			return Response(data)
 		else:
-			data = serializer.errors
-		return Response(data)
+			
+			return Response(serializer.errors)
 
 @api_view(['POST', ])
 @permission_classes((AllowAny,))
@@ -50,6 +56,9 @@ def login_view(request):
 				data['pk'] = account.pk
 				data['email'] = email.lower()
 				data['token'] = Token.objects.get(user=account).key
+				Account = Acc.objects.get(username=account)
+				log = appLog.objects.create(user_id=Account, activity=f"{account} logged in")
+				log.save()
 			else:
 				data['response'] = 'Error'
 				data['error_message'] = 'Invalid credentials'
@@ -58,17 +67,42 @@ def login_view(request):
 			return Response(serializer.errors)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def Biodata_view(request):
+	token = request.META.get('HTTP_AUTHORIZATION')
+	token = token[6:]
+	Account = Token.objects.get(key=token)
+	UserAcc = Acc.objects.get(username=Account.user)
+	bio = Biodata.objects.get(acc__username=Account.user)
+
 	if request.method == "GET":
-		token = request.META.get('HTTP_AUTHORIZATION')
-		token = token[6:]
-		Account = Token.objects.get(key=token)
-		authen = Biodata.objects.get(acc__email=Account.user)
-		serializer = BiodataSerializer(authen)
-		print(serializer.data)
+		log = appLog.objects.create(user_id=UserAcc, activity=f"{UserAcc} access biodata")
+		log.save()
+		serializer = BiodataSerializer(bio)
 		return Response(serializer.data)
 
+	if request.method == "POST" :
+		serializer = biodataUpdateSerializer(data=request.data)
+		if serializer.is_valid():
+			validate_email = Acc.objects.filter(email=serializer.data["email"])
+			validate_username = Acc.objects.filter(username=serializer.data["username"])
+
+			if UserAcc.email != serializer.data["email"] and len(validate_email) > 0:
+				return Response({"Error" : "Email already exist"})
+
+			if UserAcc.username != serializer.data["username"] and len(validate_username) > 0:
+				return Response({"Error" : "username already exist"})
+
+			UserAcc.username = serializer.data["username"]
+			UserAcc.email = serializer.data["email"]
+			UserAcc.save()
+			bio.fullname = serializer.data["fullname"]
+			bio.interest = serializer.data["interest"]
+			bio.save()
+			log = appLog.objects.create(user_id=UserAcc, activity=f"{UserAcc} updated biodata")
+			log.save()
+			return Response({"status" : "Biodata update success"})
+		return Response(serializer.errors)
 
 @api_view(['POST', ])
 @permission_classes((AllowAny,))
@@ -116,6 +150,11 @@ def changePassword(request):
 				user.set_password(serializer.data["password"])
 				user.save()
 				data["status"] = "Password changed succesfully"
+				log = appLog.objects.create(user_id=user, activity=f"{user} change password")
+				log.save()
 				return Response(data)
 		else:
 			return Response(serializer.errors)
+
+
+

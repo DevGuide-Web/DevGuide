@@ -73,3 +73,10 @@ class changePasswordSerializer(serializers.Serializer):
 	password = serializers.CharField(required=True)
 	repassword = serializers.CharField(required=True)
 	old_password = serializers.CharField(required=True)
+
+class biodataUpdateSerializer(serializers.Serializer):
+	email = serializers.EmailField(required=True)
+	username = serializers.CharField(required=True)
+	fullname = serializers.CharField(required=True)
+	interest = serializers.CharField(required=True)
+

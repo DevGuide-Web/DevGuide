@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SubjectView, view123
+from .views import SubjectView
 
 
 urlpatterns = [

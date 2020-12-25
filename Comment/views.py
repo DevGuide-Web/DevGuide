@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from Account.models import Acc
 from Subject.models import SubjectModel
 from rest_framework import serializers
@@ -11,12 +12,27 @@ from .serializers import *
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAdminUser
 from .models import commentTitle, commentSubTitle
+from Utils.models import appLog
 
 
 @api_view(['GET', 'POST' ])
 def AddComment(request, Subject):
+
+    try: 
+        subject = SubjectModel.objects.get(Sub_title4__slug=Subject)    
+    except ObjectDoesNotExist:
+        return Response({"Error": "Content does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    except :
+        return Response({"Error": "Something went wrong"}, status=status.HTTP_404_NOT_FOUND)
+
+    token = request.META.get('HTTP_AUTHORIZATION')
+    token = token[6:]
+    Account = Token.objects.get(key=token)
+    Account = Acc.objects.get(username=Account.user)
+
     if request.method == 'GET':
-        subject = SubjectModel.objects.get(Sub_title4__slug=Subject)
+        log = appLog.objects.create(user_id=Account, activity=f"Access comment for subject {Subject}")
+        log.save()
         comment = commentTitle.objects.filter(subject=subject)
         serializer = commentTitleSerializerGet(comment, many=True)
         return Response(serializer.data)
@@ -25,10 +41,8 @@ def AddComment(request, Subject):
         serializer = commentTitleSerializerPost(data=request.data)
         if serializer.is_valid():
             data = {}
-            token = request.META.get('HTTP_AUTHORIZATION')
-            token = token[6:]
-            Account = Token.objects.get(key=token)
-            Account = Acc.objects.get(username=Account.user)
+            log = appLog.objects.create(user_id=Account, activity=f"Post a comment at subject {Subject}")
+            log.save()
             subject = SubjectModel.objects.get(Sub_title4__slug=Subject)
             valid_comment = commentTitle.objects.create(user_id=Account, subject=subject, Title=serializer.data['Title'], detail=serializer.data['detail'])
             valid_comment.save()
@@ -40,8 +54,21 @@ def AddComment(request, Subject):
 
 @api_view(['GET', 'POST' ])
 def AddSubComment(request, commentID):
-    if request.method == 'GET':
+
+    try: 
         comment = commentTitle.objects.get(id=commentID)
+    except ObjectDoesNotExist:
+        return Response({"Error": "Content does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    except :
+        return Response({"Error": "Something went wrong"}, status=status.HTTP_404_NOT_FOUND)
+
+    token = request.META.get('HTTP_AUTHORIZATION')
+    token = token[6:]
+    Account = Token.objects.get(key=token)
+    Account = Acc.objects.get(username=Account.user)
+    if request.method == 'GET':
+        log = appLog.objects.create(user_id=Account, activity=f"Access Sub comment with a comment ID {commentID}")
+        log.save()
         SubComment = commentSubTitle.objects.filter(comment=comment)
         serializer = subCommentTitleSerializerGet(SubComment, many=True)
         return Response(serializer.data)
@@ -50,6 +77,8 @@ def AddSubComment(request, commentID):
         serializer = subCommentTitleSerializerPost(data=request.data)
         if serializer.is_valid():
             data = {}
+            log = appLog.objects.create(user_id=Account, activity=f"Posting Sub comment with a comment ID {commentID}")
+            log.save()
             token = request.META.get('HTTP_AUTHORIZATION')
             token = token[6:]
             Account = Token.objects.get(key=token)

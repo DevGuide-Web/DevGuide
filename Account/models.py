@@ -66,7 +66,7 @@ class Biodata(models.Model):
 	interest = models.TextField(verbose_name='User Interest', blank=True, null=True)
 
 	def __str__(self):
-		return self.username
+		return self.acc.username
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):

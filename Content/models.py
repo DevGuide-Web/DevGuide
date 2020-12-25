@@ -4,6 +4,7 @@ from django.db import models
 
 class LearningPath(models.Model):
     Title = models.CharField(max_length=100, verbose_name="Learning Path")
+    details = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 
@@ -13,6 +14,7 @@ class LearningPath(models.Model):
 class SubTitle1(models.Model):
     learning_path = models.ForeignKey(LearningPath, on_delete=models.CASCADE)
     Title = models.CharField(max_length=100, verbose_name="Sub Title 1")
+    details = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 
@@ -22,6 +24,7 @@ class SubTitle1(models.Model):
 class SubTitle2(models.Model):
     SubTitle1 = models.ForeignKey(SubTitle1, on_delete=models.CASCADE)
     Title = models.CharField(max_length=100, verbose_name="Sub Title 2")
+    details = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 
@@ -31,6 +34,7 @@ class SubTitle2(models.Model):
 class SubTitle3(models.Model):
     SubTitle2 = models.ForeignKey(SubTitle2, on_delete=models.CASCADE)
     Title = models.CharField(max_length=100, verbose_name="Sub Title 3")
+    details = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 
@@ -40,7 +44,7 @@ class SubTitle3(models.Model):
 class SubTitle4(models.Model):
     SubTitle3 = models.ForeignKey(SubTitle3, on_delete=models.CASCADE)
     Title = models.CharField(max_length=100, verbose_name="Sub Title 4")
-    details = models.TextField()
+    details = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 

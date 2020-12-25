@@ -9,5 +9,6 @@ urlpatterns = [
     path('courses/', include('Content.urls')),
     path('admin/', include('adminUser.urls')),
     path('comment/', include('Comment.urls')),
-    path('home/', HomePage)
+    path('home/', HomePage),
+    path('utils/', include('Utils.urls'))
 ]

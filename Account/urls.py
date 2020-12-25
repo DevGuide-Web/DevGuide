@@ -9,5 +9,5 @@ urlpatterns = [
     path('login/', login_view),
     path('biodata/', Biodata_view),
     path('admin/', admin_view),
-    path('changepassword/', changePassword)
+    path('changepassword/', changePassword),
 ]

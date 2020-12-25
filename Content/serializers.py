@@ -4,10 +4,10 @@ from .models import LearningPath, SubTitle1, SubTitle2, SubTitle3, SubTitle4
 
 
 
-class LearningPathSerializer(serializers.Serializer):
-    id = serializers.IntegerField(required=True)
-    Title = serializers.CharField(required=True)
-    slug = serializers.CharField(required=True)
+class LearningPathSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LearningPath
+        fields = ['Title', 'details', 'slug']
 
 
 
@@ -16,7 +16,7 @@ class SubTitle1Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = SubTitle1
-        fields = ['Title', 'slug', 'learning_path_slug']
+        fields = ['Title', 'details', 'slug', 'learning_path_slug']
     
     def get_learning_path_slug(self, sub_title1):
         LearningPathSlug = sub_title1.learning_path.slug
@@ -28,7 +28,7 @@ class SubTitle2Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = SubTitle2
-        fields = ['Title', 'slug', 'learning_path_slug','sub_title1_slug']
+        fields = ['Title', 'details', 'slug', 'learning_path_slug','sub_title1_slug']
     
     def get_learning_path_slug(self, sub_title2):
         LearningPathSlug = sub_title2.SubTitle1.learning_path.slug
@@ -45,7 +45,7 @@ class SubTitle3Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = SubTitle3
-        fields = ['Title', 'slug', 'learning_path_slug','sub_title1_slug', 'sub_title2_slug']
+        fields = ['Title', 'details', 'slug', 'learning_path_slug','sub_title1_slug', 'sub_title2_slug']
     
     def get_learning_path_slug(self, sub_title3):
         LearningPathSlug = sub_title3.SubTitle2.SubTitle1.learning_path.slug
@@ -68,7 +68,7 @@ class SubTitle4Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = SubTitle4
-        fields = ['Title', 'slug', 'learning_path_slug','sub_title1_slug', 'sub_title2_slug', 'sub_title3_slug']
+        fields = ['Title', 'details', 'slug', 'learning_path_slug','sub_title1_slug', 'sub_title2_slug', 'sub_title3_slug']
     
     def get_learning_path_slug(self, sub_title4):
         LearningPathSlug = sub_title4.SubTitle3.SubTitle2.SubTitle1.learning_path.slug
