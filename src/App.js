@@ -36,7 +36,7 @@ function App() {
             component={ChangePassword}
           />
           <Route path='/guides' exact component={Guides} />
-          <Route path='/questioner' exact component={Questioner} />
+          <Route path='/feedback' exact component={Questioner} />
           <Route path='/about' exact component={About} />
           {/* Course Route */}
           <Route path='/guides/android' exact component={Android} />

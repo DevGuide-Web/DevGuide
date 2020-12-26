@@ -56,9 +56,9 @@ export default function NavBar() {
               </Link>
             </li>
             <li className='navbar-items'>
-              <Link to='/questioner'>
+              <Link to='/feedback'>
                 <MdIcons.MdFeedback />
-                <span>Questioner</span>
+                <span>Feedback</span>
               </Link>
             </li>
             <li className='navbar-items'>

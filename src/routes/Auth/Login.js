@@ -16,6 +16,11 @@ export default function Login() {
     }).then(response => {
       localStorage.setItem('Authorization', 'Token ' + token);
       setToken(response.data.token);
+      if (token) {
+        setTimeout(window.location.reload(true), 200);
+      } else {
+        alert('Please Wait or Press Login Again...');
+      }
     });
   };
 
@@ -51,11 +56,6 @@ export default function Login() {
           <button className='crusialButton' onClick={loginAuth}>
             Login
           </button>
-        </Link>
-        <br></br>
-        <br></br>
-        <Link to='/forgotPassword'>
-          <button className='crusialButton'>Forgot Password</button>
         </Link>
         <br></br>
         <br></br>

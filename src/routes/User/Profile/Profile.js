@@ -38,7 +38,7 @@ export default function Profile() {
       <div className='profile-page'>
         <IconContext.Provider value={{ size: '300px' }}>
           <div className='profile-content'>
-            <BiIcons.BiUserCircle />
+            <h1>User Info</h1>
             <div className='profile-detail'>
               <h3>Fullname : {fullname}</h3>
               <h3>Username : {username}</h3>
