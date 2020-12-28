@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import NavBar from '../../.././NavBar/NavBar';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './editprofile.css';
 import * as BiIcons from 'react-icons/bi';
 import { IconContext } from 'react-icons';
 
-export default function EditProfile() {
+function EditProfile() {
   const [fullname, setFullname] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -113,3 +113,5 @@ export default function EditProfile() {
     </div>
   );
 }
+
+export default withRouter(EditProfile);

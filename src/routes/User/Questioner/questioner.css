@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 245vh;
+  height: 250vh;
   font-size: 19px;
 }
 .feedback-control {
@@ -38,7 +38,7 @@
 .feedback-inputOption1 {
   display: flex;
   flex-direction: row;
-  margin-left: 13.5%;
+  margin-left: 16%;
 }
 .feedback-inputOption2 {
   display: flex;

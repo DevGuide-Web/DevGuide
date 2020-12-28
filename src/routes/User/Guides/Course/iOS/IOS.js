@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../../../../NavBar/NavBar';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import '../course.css';
 
 function IOS() {
@@ -36,4 +36,4 @@ function IOS() {
   );
 }
 
-export default IOS;
+export default withRouter(IOS);

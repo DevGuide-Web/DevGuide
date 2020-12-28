@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../../../../NavBar/NavBar';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import '../course.css';
 
 function Android() {
@@ -30,10 +30,11 @@ function Android() {
       <div className='discussDiv'>
         <div className='discussDetail'>
           <h1>Discussion</h1>
+          <div className='commentDiv'></div>
         </div>
       </div>
     </div>
   );
 }
 
-export default Android;
+export default withRouter(Android);

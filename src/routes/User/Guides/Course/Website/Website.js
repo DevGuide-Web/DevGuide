@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../../../../NavBar/NavBar';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import '../course.css';
 
 function Website() {
@@ -36,4 +36,4 @@ function Website() {
   );
 }
 
-export default Website;
+export default withRouter(Website);

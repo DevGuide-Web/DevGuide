@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './suggest.css';
 
-export default function Suggest() {
+function Suggest() {
   return (
     <div>
       <Link to='/home'>
@@ -17,3 +17,5 @@ export default function Suggest() {
     </div>
   );
 }
+
+export default withRouter(Suggest);

@@ -3,10 +3,10 @@ import NavBar from '../../NavBar/NavBar';
 import { IconContext } from 'react-icons';
 import * as AiIcons from 'react-icons/ai';
 import * as FaIcons from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './guides.css';
 
-export default function Guides() {
+function Guides() {
   return (
     <div>
       <NavBar />
@@ -44,3 +44,5 @@ export default function Guides() {
     </div>
   );
 }
+
+export default withRouter(Guides);

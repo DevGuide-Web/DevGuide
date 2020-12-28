@@ -1,5 +1,7 @@
 import './App.css';
+import React, { useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProtectedRoute from './routes/Auth/ProtectedRoute';
 import DevGuide from './template/DevGuide';
 import Login from './routes/Auth/Login';
 import Register from './routes/Auth/Register';
@@ -14,8 +16,11 @@ import Android from './routes/User/Guides/Course/Android/Android';
 import IOS from './routes/User/Guides/Course/iOS/IOS';
 import Website from './routes/User/Guides/Course/Website/Website';
 import Questioner from './routes/User/Questioner/Questioner';
+import Redirect from './routes/Auth/Redirect';
 
 function App() {
+  const isAuth = localStorage.getItem('Authorization') ? true : false;
+
   return (
     <div className='App'>
       <Router>
@@ -26,22 +31,74 @@ function App() {
           <Route path='/login' exact component={Login} />
           <Route path='/register' exact component={Register} />
           {/* ! User Route ! */}
-          <Route path='/suggest' exact component={Suggest} />
-          <Route path='/home' exact component={Home} />
-          <Route path='/profile' exact component={Profile} />
-          <Route path='/profile/edit' exact component={EditProfile} />
-          <Route
+          {/* <ProtectedRoute path='/suggest' exact component={Suggest} /> */}
+          <ProtectedRoute
+            path='/home'
+            exact
+            component={Home}
+            isAuthenticated={isAuth}
+          />
+          <ProtectedRoute
+            path='/profile'
+            exact
+            component={Profile}
+            isAuthenticated={isAuth}
+          />
+          <ProtectedRoute
+            path='/profile/edit'
+            exact
+            component={EditProfile}
+            isAuthenticated={isAuth}
+          />
+          <ProtectedRoute
             path='/profile/changePassword'
             exact
             component={ChangePassword}
+            isAuthenticated={isAuth}
           />
-          <Route path='/guides' exact component={Guides} />
-          <Route path='/feedback' exact component={Questioner} />
-          <Route path='/about' exact component={About} />
+          <ProtectedRoute
+            path='/guides'
+            exact
+            component={Guides}
+            isAuthenticated={isAuth}
+          />
+          <ProtectedRoute
+            path='/feedback'
+            exact
+            component={Questioner}
+            isAuthenticated={isAuth}
+          />
+          <ProtectedRoute
+            path='/about'
+            exact
+            component={About}
+            isAuthenticated={isAuth}
+          />
           {/* Course Route */}
-          <Route path='/guides/android' exact component={Android} />
-          <Route path='/guides/ios' exact component={IOS} />
-          <Route path='/guides/website' exact component={Website} />
+          <ProtectedRoute
+            path='/guides/android'
+            exact
+            component={Android}
+            isAuthenticated={isAuth}
+          />
+          <ProtectedRoute
+            path='/guides/ios'
+            exact
+            component={IOS}
+            isAuthenticated={isAuth}
+          />
+          <ProtectedRoute
+            path='/guides/website'
+            exact
+            component={Website}
+            isAuthenticated={isAuth}
+          />
+          {/* Route Unknown */}
+          <ProtectedRoute
+            path='*'
+            component={Redirect}
+            isAuthenticated={isAuth}
+          />
         </Switch>
       </Router>
     </div>

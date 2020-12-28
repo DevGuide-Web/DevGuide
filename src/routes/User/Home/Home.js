@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import NavBar from '../../NavBar/NavBar';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import './home.css';
 
-export default function Home() {
+function Home() {
   const [user, getUser] = useState('');
 
-  Axios.get('http://www.devguide.site/api/account/biodata/', {
-    headers: {
-      Authorization: localStorage.getItem('Authorization'),
-    },
-  }).then(response => {
-    getUser(response.data.username);
-  });
+  useEffect(() => {
+    Axios.get('http://www.devguide.site/api/account/biodata/', {
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    }).then(response => {
+      getUser(response.data.username);
+    });
+  }, []);
 
   return (
     <div>
@@ -32,12 +34,12 @@ export default function Home() {
               <h1>Latest Course</h1>
             </div>
             <div className='last-courseList'>
-              <a>1. Course List</a>
-              <a>2. Course List</a>
-              <a>3. Course List</a>
-              <a>4. Course List</a>
-              <a>5. Course List</a>
-              <a>6. Course List</a>
+              <span>1. Course List</span>
+              <span>2. Course List</span>
+              <span>3. Course List</span>
+              <span>4. Course List</span>
+              <span>5. Course List</span>
+              <span>6. Course List</span>
             </div>
           </div>
         </IconContext.Provider>
@@ -45,3 +47,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default withRouter(Home);

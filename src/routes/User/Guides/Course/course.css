@@ -22,6 +22,21 @@
   border-radius: 30px;
   margin-top: 4rem;
 }
+.articleDiv,
+.videoDiv,
+.sampleDiv {
+  background-color: #fffdd0;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 15px;
+  padding: 8px;
+}
+.articleDiv h3,
+.videoDiv h3,
+.sampleDiv h3 {
+  margin-left: 20px;
+}
 .discussDiv {
   color: black;
   display: flex;
@@ -38,18 +53,9 @@
   padding: 80px;
   border-radius: 50px;
 }
-.articleDiv,
-.videoDiv,
-.sampleDiv {
+.commentDiv {
   background-color: #fffdd0;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black;
-  border-radius: 30px;
-  padding: 8px;
-}
-.articleDiv h3,
-.videoDiv h3,
-.sampleDiv h3 {
-  margin-left: 20px;
+  border-radius: 15px;
+  padding: 30px;
+  margin-top: 8vh;
 }

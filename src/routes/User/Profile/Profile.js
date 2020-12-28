@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../../NavBar/NavBar';
-import { Link } from 'react-router-dom';
-import * as BiIcons from 'react-icons/bi';
+import { Link, withRouter } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import './profile.css';
 import Axios from 'axios';
 
-export default function Profile() {
+function Profile() {
   const [fullname, getFullname] = useState('');
   const [username, getUsername] = useState('');
   const [email, getEmail] = useState('');
@@ -21,16 +20,18 @@ export default function Profile() {
     }
   };
 
-  Axios.get('http://www.devguide.site/api/account/biodata/', {
-    headers: {
-      Authorization: localStorage.getItem('Authorization'),
-    },
-  }).then(response => {
-    getFullname(response.data.fullname);
-    getUsername(response.data.username);
-    getEmail(response.data.email);
-    getInterest(response.data.interest);
-  });
+  useEffect(() => {
+    Axios.get('http://www.devguide.site/api/account/biodata/', {
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    }).then(response => {
+      getFullname(response.data.fullname);
+      getUsername(response.data.username);
+      getEmail(response.data.email);
+      getInterest(response.data.interest);
+    });
+  }, []);
 
   return (
     <div>
@@ -66,3 +67,5 @@ export default function Profile() {
     </div>
   );
 }
+
+export default withRouter(Profile);

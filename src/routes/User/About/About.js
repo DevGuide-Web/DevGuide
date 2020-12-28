@@ -1,8 +1,9 @@
 import React from 'react';
 import NavBar from '../../NavBar/NavBar';
+import { withRouter } from 'react-router-dom';
 import './about.css';
 
-export default function About() {
+function About() {
   return (
     <div>
       <NavBar />
@@ -28,3 +29,5 @@ export default function About() {
     </div>
   );
 }
+
+export default withRouter(About);

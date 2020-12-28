@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import NavBar from '../../../NavBar/NavBar';
 import './changepassword.css';
 
-export default function ChangePassword() {
+function ChangePassword() {
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
@@ -78,3 +78,5 @@ export default function ChangePassword() {
     </div>
   );
 }
+
+export default withRouter(ChangePassword);
