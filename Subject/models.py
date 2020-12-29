@@ -16,7 +16,7 @@ class SubjectModel (models.Model):
 class ArticleBasedModel(models.Model):
     Subject = models.ForeignKey(SubjectModel, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, verbose_name='Title')
-    detail = models.TextField(verbose_name='Details')
+    detail = models.TextField(verbose_name='Details', blank=True)
     article_url = models.CharField(max_length=200, verbose_name='Article URL', )
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 
@@ -29,7 +29,7 @@ class ArticleBasedModel(models.Model):
 class VideoBasedModel(models.Model):
     Subject = models.ForeignKey(SubjectModel, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, verbose_name='Title')
-    detail = models.TextField(verbose_name='Details ')
+    detail = models.TextField(verbose_name='Details ', blank=True)
     video_url = models.CharField(max_length=200, verbose_name='Video URL', )
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 
@@ -42,7 +42,7 @@ class VideoBasedModel(models.Model):
 class ProjectBasedModel(models.Model):
     Subject = models.ForeignKey(SubjectModel, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, verbose_name='Title')
-    detail = models.TextField(verbose_name='Details')
+    detail = models.TextField(verbose_name='Details', blank=True)
     project_url = models.CharField(max_length=200, verbose_name='Project URL', )
     date_created = models.DateTimeField(auto_now_add=True, verbose_name="Date Created")
 
