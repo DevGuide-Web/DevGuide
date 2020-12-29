@@ -23,7 +23,7 @@ def SubjectView(request, LearningPathSlug, SubTitle1Slug, SubTitle2Slug, SubTitl
         sub_title2 = SubTitle2.objects.filter(SubTitle1__slug = SubTitle1Slug)
         sub_title3 = SubTitle3.objects.filter(SubTitle2__slug = SubTitle2Slug)
         sub_title4 = SubTitle4.objects.filter(SubTitle3__slug = SubTitle3Slug)
-        subject_title = SubjectModel.objects.filter(Sub_title4__slug = SubjectSlug)
+        subject_title = SubjectModel.objects.get(Sub_title4__slug = SubjectSlug)
         if not subject_title or not sub_title1 or not sub_title2 or not sub_title3 or not sub_title4:
             return Response({"Error": "Content does not exist"}, status=status.HTTP_404_NOT_FOUND)
     except:
@@ -38,6 +38,7 @@ def SubjectView(request, LearningPathSlug, SubTitle1Slug, SubTitle2Slug, SubTitl
         Title = SubTitle4.objects.get(slug=SubjectSlug).Title  
         log = appLog.objects.create(user_id=Account, activity=f"Access Subject {Title}")
         log.save()
+        print(Title)
         serializer = SubjectSerializer(subject_title)
         return Response(serializer.data)
 

@@ -33,7 +33,7 @@ def AddComment(request, Subject):
     if request.method == 'GET':
         log = appLog.objects.create(user_id=Account, activity=f"Access comment for subject {Subject}")
         log.save()
-        comment = commentTitle.objects.filter(subject=subject)
+        comment = commentTitle.objects.filter(subject=subject).order_by('-DateTime')
         serializer = commentTitleSerializerGet(comment, many=True)
         return Response(serializer.data)
 
@@ -69,7 +69,7 @@ def AddSubComment(request, commentID):
     if request.method == 'GET':
         log = appLog.objects.create(user_id=Account, activity=f"Access Sub comment with a comment ID {commentID}")
         log.save()
-        SubComment = commentSubTitle.objects.filter(comment=comment)
+        SubComment = commentSubTitle.objects.filter(comment=comment).order_by('-DateTime')
         serializer = subCommentTitleSerializerGet(SubComment, many=True)
         return Response(serializer.data)
     

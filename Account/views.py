@@ -15,19 +15,10 @@ from Utils.models import appLog
 def registration_view(request):
 	if request.method == 'POST':
 		serializer = RegistrationSerializer(data=request.data)
-		data = {}
 		if serializer.is_valid():
 			account = serializer.save()
 			log = appLog.objects.create(user_id=account, activity=f"Account with username {account.username} has been created")
 			log.save()
-			data['response'] = 'successfully registered new user.'
-			data['pk'] = account.pk
-			# Token.objects.create(user=account)
-			token = Token.objects.get(user=account).key
-			data['token'] = token
-			data['email'] = account.email
-			data['username'] = account.username
-
 			#make Biodata
 			bio = Biodata.objects.create(acc = account)
 			bio.save()
@@ -36,7 +27,7 @@ def registration_view(request):
 			kuesioner = kuesionerModel.objects.create(user_id=account)
 			kuesioner.save()
 
-			return Response(data)
+			return Response({"status": "Succesfully register new account"})
 		else:
 			
 			return Response(serializer.errors)
@@ -54,13 +45,13 @@ def login_view(request):
 			if account:
 				data['response'] = 'Successfully authenticated.'
 				data['pk'] = account.pk
-				data['email'] = email.lower()
+				data['username'] = account.username
 				data['token'] = Token.objects.get(user=account).key
 				Account = Acc.objects.get(username=account)
 				log = appLog.objects.create(user_id=Account, activity=f"{account} logged in")
 				log.save()
 			else:
-				data['response'] = 'Error'
+				data['response'] = 'Invalid credentials'
 				data['error_message'] = 'Invalid credentials'
 			return Response(data)
 		else:
