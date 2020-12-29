@@ -23,8 +23,12 @@ class ArticleBasedModel(models.Model):
     def __str__(self):
         return self.title
     
-    def get_link(self):
-        return self.article_url
+    def get_data(self):
+        data=[]
+        data.append(self.title)
+        data.append(self.detail)
+        data.append(self.article_url)
+        return data
 
 class VideoBasedModel(models.Model):
     Subject = models.ForeignKey(SubjectModel, on_delete=models.CASCADE)
@@ -36,8 +40,12 @@ class VideoBasedModel(models.Model):
     def __str__(self):
         return self.title
     
-    def get_link(self):
-        return self.video_url
+    def get_data(self):
+        data=[]
+        data.append(self.title)
+        data.append(self.detail)
+        data.append(self.video_url)
+        return data
 
 class ProjectBasedModel(models.Model):
     Subject = models.ForeignKey(SubjectModel, on_delete=models.CASCADE)
@@ -49,5 +57,9 @@ class ProjectBasedModel(models.Model):
     def __str__(self):
         return self.title
 
-    def get_link(self):
-        return self.project_url
+    def get_data(self):
+        data=[]
+        data.append(self.title)
+        data.append(self.detail)
+        data.append(self.project_url)
+        return data

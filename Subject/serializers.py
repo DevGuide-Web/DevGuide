@@ -24,21 +24,21 @@ class SubjectSerializer(serializers.ModelSerializer):
         data = {}
         query = ArticleBasedModel.objects.filter(Subject__Sub_title4__Title=Subject_Model.Sub_title4.Title)
         for x in range(len(query)):
-            data[x+1] = query[x].get_link()
+            data[x+1] = query[x].get_data()
         return data
     
     def get_video_url(self, Subject_Model):
         data = {}
         query = VideoBasedModel.objects.filter(Subject__Sub_title4__Title=Subject_Model.Sub_title4.Title)
         for x in range(len(query)):
-            data[x+1] = query[x].get_link()
+            data[x+1] = query[x].get_data()
         return data
     
     def get_project_url(self, Subject_Model):
         data = {}
         query = ProjectBasedModel.objects.filter(Subject__Sub_title4__Title=Subject_Model.Sub_title4.Title)
         for x in range(len(query)):
-            data[x+1] = query[x].get_link()
+            data[x+1] = query[x].get_data()
         return data
     
     
