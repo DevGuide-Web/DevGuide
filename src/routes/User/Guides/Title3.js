@@ -8,9 +8,9 @@ import { fetchTitle3 } from "../../../redux/";
 import { connect } from "react-redux";
 
 
-function Title3({ data, fetchTitle3, match }) {
+function Title3({ data, userData, fetchTitle3, match }) {
   useEffect(() => {
-    fetchTitle3(match.params, localStorage.getItem('Authorization'));
+    fetchTitle3(match.params, userData.data.Authorization);
   }, []);
   return (
     <div>
@@ -45,6 +45,7 @@ function Title3({ data, fetchTitle3, match }) {
 const mapStateToProps = (state) => {
   return {
     data: state.sub_title3,
+    userData: state.login
   };
 };
 

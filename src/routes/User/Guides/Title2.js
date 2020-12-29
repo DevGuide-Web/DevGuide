@@ -7,9 +7,9 @@ import "./guides.css";
 import { fetchTitle2 } from "../../../redux/";
 import { connect } from "react-redux";
 
-function Title2({ data, fetchTitle2, match }) {
+function Title2({ data, userData, fetchTitle2, match }) {
   useEffect(() => {
-    fetchTitle2(match.params, localStorage.getItem("Authorization"));
+    fetchTitle2(match.params, userData.data.Authorization);
   }, []);
   return (
     <div>
@@ -43,6 +43,7 @@ function Title2({ data, fetchTitle2, match }) {
 const mapStateToProps = (state) => {
   return {
     data: state.sub_title2,
+    userData: state.login,
   };
 };
 

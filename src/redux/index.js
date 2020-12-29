@@ -7,3 +7,5 @@ export * from "./login/loginActions";
 export * from "./register/registerActions";
 export * from "./subject/subjectActions";
 export * from "./comment/commentActions";
+export * from "./postComment/postCommentActions";
+export * from "./subComment/subCommentActions";

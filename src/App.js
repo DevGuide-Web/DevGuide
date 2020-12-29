@@ -19,6 +19,7 @@ import Title2 from "./routes/User/Guides/Title2";
 import Title3 from "./routes/User/Guides/Title3";
 import Title4 from "./routes/User/Guides/Title4";
 import Subject from "./routes/User/Guides/Course/Subject";
+import Comment from "./routes/User/Guides/Course/Comment";
 import Test from "./routes/Test";
 import store from "./redux/store";
 import { Provider } from "react-redux";
@@ -100,6 +101,7 @@ function App() {
               exact
               component={Subject}
             />
+            <Route path="/comment/:id" exact component={Comment}/>
             {/* Route Unknown */}
             <Route
               path="*"

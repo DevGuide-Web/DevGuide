@@ -41,7 +41,7 @@ function Login({ data, fetchLogin, history }) {
           onChange={(event) => {
             setEmail(event.target.value);
           }}
-        ></input>
+        />
         <br></br>
         <br></br>
         <input
@@ -51,7 +51,7 @@ function Login({ data, fetchLogin, history }) {
           onChange={(event) => {
             setPassword(event.target.value);
           }}
-        ></input>
+        />
         <br></br>
         <br></br>
         <button className="crusialButton" onClick={loginAuth}>

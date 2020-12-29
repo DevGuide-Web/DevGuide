@@ -8,6 +8,8 @@ import loginReducer from './login/loginReducer'
 import registerReducer from './register/registerReducer'
 import subjectReducer from './subject/subjectReducer'
 import commentReducer from './comment/commentReducer'
+import postCommentReducer from './postComment/postCommentReducer'
+import subCommentReducer from './subComment/subCommentReducer'
 
 
 const rootReducer = combineReducers({
@@ -20,6 +22,9 @@ const rootReducer = combineReducers({
   register: registerReducer,
   subject: subjectReducer,
   comment: commentReducer,
+  post_comment: postCommentReducer,
+  subcomment: subCommentReducer,
+
   
 })
 

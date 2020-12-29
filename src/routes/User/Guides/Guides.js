@@ -5,9 +5,9 @@ import "./guides.css";
 import { fetchLearning } from "../../../redux/";
 import { connect } from "react-redux";
 
-function Guides({ data, fetchLearning }) {
+function Guides({ data, userData, fetchLearning }) {
   useEffect(() => {
-    fetchLearning(localStorage.getItem("Authorization"));
+    fetchLearning(userData.data.Authorization);
   }, []);
   return (
     <div>
@@ -38,6 +38,7 @@ function Guides({ data, fetchLearning }) {
 const mapStateToProps = (state) => {
   return {
     data: state.learn_path,
+    userData: state.login
   };
 };
 
