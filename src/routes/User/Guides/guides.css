@@ -1,9 +1,11 @@
 .guides-page {
   display: flex;
   flex-direction: column;
-  height: 88vh;
+  height: auto;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .guides-content {
   background-color: #ffcc67;
@@ -30,19 +32,31 @@
 }
 .guides-detail button {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
   text-align: center;
+  align-items: center;
   color: #ffcc67;
   text-decoration: none;
   width: 100%;
+  padding: 20px;
+  font-size: 18px;
 }
 .guides-detail a {
-  font-size: 18px;
   padding: 10px;
   text-decoration: none;
-  width: 30%;
+  width: 40%;
 }
 .guides-detail a:hover {
   color: black;
+}
+.guidesTitleDetail {
+  color: #ffcc67;
+  background-color: #907d56;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 6px;
+  border-color: black;
+  padding: 30px;
+  margin-bottom: 50px;
+  font-size: 16px;
 }

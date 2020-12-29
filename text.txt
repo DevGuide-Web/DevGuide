@@ -1,0 +1,73 @@
+<Router>
+          <Switch>
+            {/* Home Routes */}
+            <Route path="/" exact component={DevGuide} />
+            {/* User Auth */}
+            <Route path="/login" exact component={Login} />
+            <Route path="/register" exact component={Register} />
+            {/* ! User Route ! */}
+            {/* <ProtectedRoute path='/suggest' exact component={Suggest} /> */}
+            
+            <Route
+              path="/home"
+              exact
+              component={Home}
+            />
+            <Route
+              path="/profile"
+              exact
+              component={Profile}
+            />
+            <Route
+              path="/profile/edit"
+              exact
+              component={EditProfile}
+            />
+            <Route
+              path="/profile/changePassword"
+              exact
+              component={ChangePassword}
+            />
+            <Route
+              path="/guides"
+              exact
+              component={Guides}
+            />
+            <Route
+              path="/feedback"
+              exact
+              component={Questioner}
+            />
+            <Route
+              path="/about"
+              exact
+              component={About}
+            />
+            {/* Title Route */}
+            <Route
+              path="/guides/:id"
+              exact
+              component={Title1}
+            />
+            <Route
+              path="/guides/:id/:id2"
+              exact
+              component={Title2}
+            />
+            <Route
+              path="/guides/:id/:id2/:id3"
+              exact
+              component={Title3}
+            />
+            <Route
+              path="/guides/:id/:id2/:id3/:id4"
+              exact
+              component={Title4}
+            />
+            {/* Route Unknown */}
+            {/* <Route
+              path="*"
+              component={Redirect}
+            /> */}
+          </Switch>
+        </Router>

@@ -1,0 +1,2 @@
+export const REGISTER_SEND = 'REGISTER_SEND'
+export const REGISTER_FAILED = 'REGISTER_FAILED'

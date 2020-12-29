@@ -1,71 +1,85 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Axios from 'axios';
-import '../Auth/auth.css';
+import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { fetchLogin } from "../../redux/";
+import { connect } from "react-redux";
+import "../Auth/auth.css";
 
-export default function Login() {
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPass, setLoginPass] = useState('');
+function Login({ data, fetchLogin, history }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [note, setNote] = useState(false)
+  const {token} = data
 
-  const [token, setToken] = useState('');
+  useEffect(() => {
+    if(token){
+      history.push('/home')
+    }
+  },[history, token]) 
 
   const loginAuth = () => {
-    Axios.post('http://www.devguide.site/api/account/login/', {
-      email: loginEmail,
-      password: loginPass,
-    }).then(response => {
-      localStorage.setItem('Authorization', 'Token ' + token);
-      setToken(response.data.token);
-      if (token) {
-        setTimeout(window.location.reload(true), 200);
-      } else {
-        alert('Please Wait or Press Login Again...');
-      }
-    });
-  };
+    if (!email || !password){
+      return setNote(true)
+    }
+    return fetchLogin(email, password);
+  }
 
   return (
-    <div className='login-auth'>
-      <div className='formLogin'>
-        <Link to='/'>
-          <button className='crusialButton'>Back</button>
+    <div className="login-auth">
+      <div className="formLogin">
+        <Link to="/">
+          <button className="crusialButton">Back</button>
         </Link>
+        {data.response && <h1>{data.response}</h1>}
+        {data.email && <h1>{data.email}</h1>}
+        {note && <h1>please fill the field below!</h1>}
         <br></br>
         <br></br>
         <input
-          type='text'
-          placeholder='Email'
-          className='crusialInput'
-          onChange={event => {
-            setLoginEmail(event.target.value);
+          type="text"
+          placeholder="Email"
+          className="crusialInput"
+          onChange={(event) => {
+            setEmail(event.target.value);
           }}
         ></input>
         <br></br>
         <br></br>
         <input
-          type='password'
-          placeholder='Password'
-          className='crusialInput'
-          onChange={event => {
-            setLoginPass(event.target.value);
+          type="password"
+          placeholder="Password"
+          className="crusialInput"
+          onChange={(event) => {
+            setPassword(event.target.value);
           }}
         ></input>
         <br></br>
         <br></br>
-        <Link to={token ? '/home' : '/login'}>
-          <button className='crusialButton' onClick={loginAuth}>
-            Login
-          </button>
-        </Link>
+        <button className="crusialButton" onClick={loginAuth}>
+          Login
+        </button>
         <br></br>
         <br></br>
         Don't have an Account?
         <br></br>
         <br></br>
-        <Link to='/register'>
-          <button className='crusialButton'>Register</button>
+        <Link to="/register">
+          <button className="crusialButton">Register</button>
         </Link>
       </div>
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    data: state.login.data,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchLogin: (email, password) => dispatch(fetchLogin(email, password)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
