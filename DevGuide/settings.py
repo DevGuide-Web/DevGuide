@@ -29,8 +29,12 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool, default=True)
 
 ALLOWED_HOSTS = [
-    '*'
+    "127.0.0.1",
+    "localhost",
+    "devguide.site",
+    "www.devguide.site"
 ]
+    
 
 
 # Application definition
@@ -151,3 +155,14 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+
+STATIC_URL = '/static/'
+ 
+MEDIA_URL = '/media/'
+ 
+STATIC_ROOT = '/home/devguide/DevGuide/static/'
+ 
+MEDIA_ROOT = '/home/websites/DevGuide/media/'
+ 
