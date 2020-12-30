@@ -3,8 +3,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 270vh;
+  height: 250vh;
   font-size: 19px;
+  margin-top: 2rem;
 }
 .feedback-control {
   display: flex;

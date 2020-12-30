@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import NavBar from "../../../NavBar/NavBar";
-import "./course.css";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import NavBar from '../../../NavBar/NavBar';
+import './course.css';
 import {
   fetchComment,
   fetchSubject,
   fetchPostComment,
-} from "../../../../redux";
-import { connect } from "react-redux";
+} from '../../../../redux';
+import { connect } from 'react-redux';
 
 function Subject({
   dataSubject,
@@ -19,8 +19,8 @@ function Subject({
   userData,
   match,
 }) {
-  const [title, setTitle] = useState("");
-  const [detail, setDetail] = useState("");
+  const [title, setTitle] = useState('');
+  const [detail, setDetail] = useState('');
   const [note, setNote] = useState(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function Subject({
     }
     return fetchPostComment(
       match.params,
-      localStorage.getItem("Authorization"),
+      userData.data.Authorization,
       title,
       detail
     );
@@ -43,39 +43,41 @@ function Subject({
   return (
     <>
       <NavBar />
-      <div className="courseDiv">
-        <div className="courseDetail">
-          {dataSubject.data.title}
-
-          <div className="subDetail">{dataSubject.data.detail}</div>
-          <div className="subDetail">
+      <div className='courseDiv'>
+        <div className='courseDetail'>
+          <div className='courseTitle'>{dataSubject.data.title}</div>
+          <div className='subDetailTitle'>{dataSubject.data.detail}</div>
+          <div className='subDetail'>
             {dataSubject.data.article_url && (
-              <div className="articleDiv">
+              <div className='articleDiv'>
+                <h2>Article </h2>
                 {Object.values(dataSubject.data.article_url).map(
                   (url, index) => (
-                    <React.Fragment key={index}>
+                    <div className='articleDetail' key={index}>
                       {index + 1}. <a href={url[2]}>{url[0]}</a>
-                    </React.Fragment>
+                    </div>
                   )
                 )}
               </div>
             )}
             {dataSubject.data.video_url && (
-              <div className="videoDiv">
+              <div className='videoDiv'>
+                <h2>Video Tutorial</h2>
                 {Object.values(dataSubject.data.video_url).map((url, index) => (
-                  <React.Fragment key={index}>
+                  <div className='videoDetail' key={index}>
                     {index + 1}. <a href={url[2]}>{url[0]}</a>
-                  </React.Fragment>
+                  </div>
                 ))}
               </div>
             )}
             {dataSubject.data.project_url && (
-              <div className="sampleDiv">
+              <div className='sampleDiv'>
+                <h2>Project / Sample Code </h2>
                 {Object.values(dataSubject.data.project_url).map(
                   (url, index) => (
-                    <React.Fragment key={index}>
+                    <div className='sampleDetail' key={index}>
                       {index + 1}. <a href={url[2]}>{url[0]}</a>
-                    </React.Fragment>
+                    </div>
                   )
                 )}
               </div>
@@ -83,47 +85,65 @@ function Subject({
           </div>
         </div>
       </div>
-      <div className="discussDiv">
-        <div className="discussDetail">
+      <div className='discussDiv'>
+        <div className='discussDetail'>
           <h1>Discussion</h1>
-          <h1>Post your questions down below!</h1>
-          <input
-            type="text"
-            placeholder="Title"
-            className=""
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Detail"
-            className=""
-            onChange={(event) => {
-              setDetail(event.target.value);
-            }}
-          />
-          <button className="" onClick={postComment}>
-            Post
-          </button>
-
-          {dataComment.data.map((comment) => (
-            <Link to={`/comment/${comment.id}`}>
-              <div className="commentDiv" key={comment.id}>
-                <h1>{comment.username}</h1>
-                <h1>{comment.Title}</h1>
-                <h1>{comment.detail}</h1>
-                <h1>{comment.DateTime}</h1>
+          <div className='discussComponent'>
+            <div className='questionDiv'>
+              <div className='questionControl'>
+                <h3>Post your questions down below!</h3>
+                <div className='questionForm'>
+                  <input
+                    type='text'
+                    placeholder='Title'
+                    className='questionTitle'
+                    onChange={event => {
+                      setTitle(event.target.value);
+                    }}
+                  />
+                  <textarea
+                    type='text'
+                    placeholder='Detail'
+                    className='questionDetail'
+                    onChange={event => {
+                      setDetail(event.target.value);
+                    }}
+                  />
+                  <div className='questionButtonControl'>
+                    <button className='questionButton' onClick={postComment}>
+                      Post
+                    </button>
+                  </div>
+                </div>
               </div>
-            </Link>
-          ))}
+            </div>
+            <div className='commentDiv'>
+              <div className='commentDetail'>
+                <h1>All Comment</h1>
+                {dataComment.data.map(comment => (
+                  <div className='commentComponent' key={comment.id}>
+                    <div className='commentHeader'>
+                      <h2>{comment.username}</h2>
+                      <h4>Date : {comment.DateTime}</h4>
+                    </div>
+                    <div className='commentContent'>
+                      <Link to={`/comment/${comment.id}`}>
+                        <h3 className='commentTitle'>{comment.Title}</h3>
+                      </Link>
+                      <p className='commentDesc'>{comment.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     dataSubject: state.subject,
     dataComment: state.comment,
@@ -132,7 +152,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchSubject: (slug, headers) => dispatch(fetchSubject(slug, headers)),
     fetchComment: (slug, headers) => dispatch(fetchComment(slug, headers)),

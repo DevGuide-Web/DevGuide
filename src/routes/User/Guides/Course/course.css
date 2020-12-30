@@ -8,10 +8,30 @@
 }
 .courseDetail {
   background-color: #ffcc67;
-  width: 60%;
+  width: 70%;
   text-align: center;
   padding: 80px;
   border-radius: 50px;
+  border-style: solid;
+  border-color: black;
+  border-width: 7px;
+}
+.courseTitle {
+  font-size: 32px;
+  font-weight: bolder;
+}
+.subDetailTitle {
+  font-size: 17px;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  background-color: #fffdd0;
+  padding: 50px;
+  border-radius: 20px;
+  border-color: #da9100;
+  border-style: solid;
+  border-width: 30px;
+  margin-top: 4rem;
 }
 .subDetail {
   text-align: justify;
@@ -19,23 +39,36 @@
   flex-direction: column;
   background-color: #da9100;
   padding: 50px;
-  border-radius: 30px;
-  margin-top: 4rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+}
+.subDetail a {
+  text-decoration: none;
+  color: black;
 }
 .articleDiv,
 .videoDiv,
 .sampleDiv {
   background-color: #fffdd0;
-  border-width: 5px;
-  border-style: solid;
-  border-color: black;
   border-radius: 15px;
-  padding: 8px;
+  padding: 15px;
 }
-.articleDiv h3,
-.videoDiv h3,
-.sampleDiv h3 {
+.articleDiv h2,
+.videoDiv h2,
+.sampleDiv h2 {
+  text-align: center;
+}
+.videoDiv {
+  margin-top: 2rem;
+}
+.sampleDiv {
+  margin-top: 2rem;
+}
+.articleDetail,
+.videDetail,
+.sampleDetail {
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 .discussDiv {
   color: black;
@@ -43,19 +76,108 @@
   justify-content: center;
   align-items: center;
   height: auto;
-  margin-top: 100px;
+  margin-top: 70px;
   margin-bottom: 10vh;
 }
 .discussDetail {
   background-color: #da9100;
-  width: 50%;
+  width: 75%;
   text-align: center;
-  padding: 80px;
+  padding: 1rem;
   border-radius: 50px;
+  border-style: solid;
+  border-color: black;
+  border-width: 7px;
 }
-.commentDiv {
-  background-color: #fffdd0;
+.discussComponent {
   border-radius: 15px;
   padding: 30px;
-  margin-top: 8vh;
+  margin-top: 6vh;
+}
+.questionDiv {
+  background-color: #fffdd0;
+  padding: 50px;
+  border-radius: 30px;
+  text-align: left;
+}
+.questionForm {
+  display: flex;
+  flex-direction: column;
+}
+.questionTitle,
+.questionDetail {
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+.questionDetail {
+  height: 12vh;
+  resize: none;
+}
+.questionButtonControl {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+}
+.questionButton {
+  margin-left: 88%;
+  cursor: pointer;
+  width: 130px;
+  padding: 6px;
+  background-color: black;
+  color: #ffcc67;
+  font-weight: bold;
+  border-radius: 35px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+}
+.questionButton:hover {
+  background-color: #ffcc67;
+  color: black;
+}
+.commentDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  margin-top: 5vh;
+}
+.commentDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+}
+.commentDiv a {
+  text-decoration: none;
+  color: black;
+}
+.commentComponent {
+  padding: 20px;
+  background-color: #fffdd0;
+  margin-bottom: 3rem;
+  border-radius: 20px;
+  box-shadow: 10px 10px #907d56;
+}
+.commentHeader {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffcc67;
+  border-radius: 20px;
+}
+.commentContent {
+  margin-top: 2rem;
+}
+.commentTitle {
+  color: #da9100;
+}
+.commentTitle:hover {
+  color: black;
+}
+.commentDesc {
+  margin-top: 3rem;
 }
