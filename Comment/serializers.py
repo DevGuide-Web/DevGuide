@@ -34,3 +34,7 @@ class subCommentTitleSerializerGet(serializers.ModelSerializer):
 
 class subCommentTitleSerializerPost(serializers.Serializer):
     detail = serializers.CharField()
+
+class combineSerializer(serializers.Serializer):
+    comment = commentTitleSerializerGet
+    subComment = subCommentTitleSerializerGet

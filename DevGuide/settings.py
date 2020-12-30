@@ -14,7 +14,6 @@ from collections import defaultdict
 from pathlib import Path
 from typing import cast
 from decouple import config
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,16 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%wy44pte-7*pbpu*p_k=8n7v0a_m=rq009#uy1d%zi*t9c7@1!'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=True)
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'devguide.site',
-    'www.devguide.site'
+    '*'
 ]
 
 
@@ -54,7 +50,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'Subject',
     'adminUser',
-    'corsheaders',
 
 ]
 
@@ -68,11 +63,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    )
 
 ROOT_URLCONF = 'DevGuide.urls'
 
@@ -103,11 +93,11 @@ WSGI_APPLICATION = 'DevGuide.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'devguide_core',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'devguide_admin',
-        'PASSWORD': 'anjingterbang',
+        'NAME': config('NAME'),
+        'HOST': config('HOST'),
+        'PORT': config('PORT'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
     }
 }
@@ -149,6 +139,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_URL = '/static/'
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -159,28 +151,3 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000'
-]
-
-CORS_ALLOW_HEADERS = (
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-)
-
- 
-# MEDIA_URL = '/media/'
- 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
- 
-# MEDIA_ROOT = '/home/devguide/DevGuide/media/'

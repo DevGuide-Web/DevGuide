@@ -69,8 +69,16 @@ def AddSubComment(request, commentID):
     if request.method == 'GET':
         log = appLog.objects.create(user_id=Account, activity=f"Access Sub comment with a comment ID {commentID}")
         log.save()
+        comment = commentTitle.objects.get(id=commentID)
+        print(comment)
+        commentSerializer=commentTitleSerializerGet(comment)
         SubComment = commentSubTitle.objects.filter(comment=comment).order_by('-DateTime')
-        serializer = subCommentTitleSerializerGet(SubComment, many=True)
+        subCommentserializer = subCommentTitleSerializerGet(SubComment, many=True)
+        data={
+            "comment":commentSerializer,
+            "sub_comment": subCommentserializer
+        }
+        serializer = combineSerializer(data)
         return Response(serializer.data)
     
     if request.method == 'POST':
@@ -91,4 +99,16 @@ def AddSubComment(request, commentID):
             return Response(data)
         else :
             return Response(serializer.errors)
+
+@api_view(["GET"])
+def specificComment(request, commentID):
+    if request.method == "GET":
+        try:
+            comment = commentTitle.objects.get(id=commentID)
+            serializer = commentTitleSerializerGet(comment)
+            return Response(serializer.data)
+        except ObjectDoesNotExist:
+            return Response({"Error": "Content does not exist"}, status=status.HTTP_404_NOT_FOUND)
+        except :
+            return Response({"Error": "Something went wrong"}, status=status.HTTP_404_NOT_FOUND)
     

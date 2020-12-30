@@ -5,4 +5,5 @@ from .views import *
 urlpatterns = [
     path('<Subject>/', AddComment),
     path('subcomment/<commentID>/', AddSubComment),
+    path('specific/<commentID>/', specificComment)
 ]
