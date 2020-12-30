@@ -1,6 +1,11 @@
 import "./App.css";
 import React, { useState, useContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import ProtectedRoute from "./routes/Auth/ProtectedRoute";
 import DevGuide from "./template/DevGuide";
 import Login from "./routes/Auth/Login";
@@ -13,7 +18,6 @@ import Profile from "./routes/User/Profile/Profile";
 import EditProfile from "./routes/User/Profile/Edit/EditProfile";
 import Suggest from "./routes/User/Suggest/Suggest";
 import Questioner from "./routes/User/Questioner/Questioner";
-import Redirect from "./routes/Auth/Redirect";
 import Title1 from "./routes/User/Guides/Title1";
 import Title2 from "./routes/User/Guides/Title2";
 import Title3 from "./routes/User/Guides/Title3";
@@ -25,7 +29,6 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 
 function App() {
-
   return (
     <Provider store={store}>
       <div className="App">
@@ -39,77 +42,32 @@ function App() {
             <Route path="/register" exact component={Register} />
             {/* ! User Route ! */}
             {/* <ProtectedRoute path='/suggest' exact component={Suggest} /> */}
-            
-            <Route
-              path="/home"
-              exact
-              component={Home}
-            />
-            <Route
-              path="/profile"
-              exact
-              component={Profile}
-            />
-            <Route
-              path="/profile/edit"
-              exact
-              component={EditProfile}
-            />
+            <Route path="/home" exact component={Home} />
+            <Route path="/profile" exact component={Profile} />
+            <Route path="/profile/edit" exact component={EditProfile} />
             <Route
               path="/profile/changePassword"
               exact
               component={ChangePassword}
             />
-            <Route
-              path="/guides"
-              exact
-              component={Guides}
-            />
-            <Route
-              path="/feedback"
-              exact
-              component={Questioner}
-            />
-            <Route
-              path="/about"
-              exact
-              component={About}
-            />
+            <Route path="/guides" exact component={Guides} />
+            <Route path="/feedback" exact component={Questioner} />
+            <Route path="/about" exact component={About} />
             {/* Title Route */}
-            <Route
-              path="/guides/:id"
-              exact
-              component={Title1}
-            />
-            <Route
-              path="/guides/:id/:id2"
-              exact
-              component={Title2}
-            />
-            <Route
-              path="/guides/:id/:id2/:id3"
-              exact
-              component={Title3}
-            />
-            <Route
-              path="/guides/:id/:id2/:id3/:id4"
-              exact
-              component={Title4}
-            />
+            <Route path="/guides/:id" exact component={Title1} />
+            <Route path="/guides/:id/:id2" exact component={Title2} />
+            <Route path="/guides/:id/:id2/:id3" exact component={Title3} />
+            <Route path="/guides/:id/:id2/:id3/:id4" exact component={Title4} />
             <Route
               path="/guides/:id/:id2/:id3/:id4/:subject"
               exact
               component={Subject}
             />
-            <Route path="/comment/:id" exact component={Comment}/>
+            <Route path="/comment/:id" exact component={Comment} />
             {/* Route Unknown */}
-            <Route
-              path="*"
-              component={Redirect}
-            />
+            <Route path="*" component={Redirect} />
           </Switch>
         </Router>
-        
       </div>
     </Provider>
   );

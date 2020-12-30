@@ -1,27 +1,29 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { fetchLogin } from "../../redux/";
+import { assignLocalstorage, fetchLogin } from "../../redux/";
 import { connect } from "react-redux";
 import "../Auth/auth.css";
 
-function Login({ data, fetchLogin, history }) {
+function Login({ data, fetchLogin, history, assignLocalstorage }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [note, setNote] = useState(false)
-  const {token} = data
+  const [note, setNote] = useState(false);
+  const { token } = data;
 
   useEffect(() => {
-    if(token){
-      history.push('/home')
+    if (token) {
+      assignLocalstorage();
+      history.push("/home");
+      // window.location.reload()
     }
-  },[history, token]) 
+  }, [history, token]);
 
   const loginAuth = () => {
-    if (!email || !password){
-      return setNote(true)
+    if (!email || !password) {
+      return setNote(true);
     }
     return fetchLogin(email, password);
-  }
+  };
 
   return (
     <div className="login-auth">
@@ -79,6 +81,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchLogin: (email, password) => dispatch(fetchLogin(email, password)),
+    assignLocalstorage: () => dispatch(assignLocalstorage()),
   };
 };
 
