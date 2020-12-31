@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchLogin = (email, password) => {
   return (dispatch) => {
     axios
-      .post("https://devguide.site/api/account/login/", {
+      .post("https://api.devguide.site/account/login/", {
         email,
         password,
       })

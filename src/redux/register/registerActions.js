@@ -6,7 +6,7 @@ import axios from 'axios'
 export const fetchRegister = (email, username, password, repassword) => {
     return (dispatch) => {
       axios
-        .post('https://devguide.site/api/account/register/', 
+        .post('https://api.devguide.site/account/register/', 
         {
           email,
           username,

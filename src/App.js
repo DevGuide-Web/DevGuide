@@ -31,10 +31,10 @@ import { Provider } from "react-redux";
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        {/* <Test /> */}
-        <Router>
-          <Switch>
+      {/* <Test /> */}
+      <Router>
+        <Switch>
+          <div className="App">
             {/* Home Routes */}
             <Route path="/" exact component={DevGuide} />
             {/* User Auth */}
@@ -64,11 +64,9 @@ function App() {
               component={Subject}
             />
             <Route path="/comment/:id" exact component={Comment} />
-            {/* Route Unknown */}
-            <Route path="*" component={Redirect} />
-          </Switch>
-        </Router>
-      </div>
+          </div>
+        </Switch>
+      </Router>
     </Provider>
   );
 }

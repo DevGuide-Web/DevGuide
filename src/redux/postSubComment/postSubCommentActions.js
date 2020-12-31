@@ -4,7 +4,7 @@ import axios from 'axios'
 export const fetchPostComment = (slug, headers, title, detail) => {
     return (dispatch) => {
       axios
-        .post(`https://devguide.site/api/comment/${slug.subject}/`,{
+        .post(`https://api.devguide.site/comment/${slug.subject}/`,{
         Title: title,
         detail
         }, {
