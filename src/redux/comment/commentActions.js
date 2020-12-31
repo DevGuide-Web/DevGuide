@@ -4,27 +4,7 @@ import axios from 'axios'
 export const fetchComment = (slug, headers) => {
     return (dispatch) => {
       axios
-        .get(`https://api.devguide.site/comment/${slug.subject}/`, {
-            headers: {
-              Authorization: headers,
-            },
-          })
-        .then(response => {
-          // response.data is the users
-          const comments = response.data
-          dispatch(commentSuccess(comments))
-        })
-        .catch(error => {
-          // error.message is the error message
-          dispatch(commentFailure(error.message))
-        })
-    }
-  }
-
-  export const fetchSpecificComment = (id, headers) => {
-    return (dispatch) => {
-      axios
-        .get(`https://api.devguide.site/comment/specific/${id}/`, {
+        .get(`https://devguide.site/api/comment/${slug.subject}/`, {
             headers: {
               Authorization: headers,
             },

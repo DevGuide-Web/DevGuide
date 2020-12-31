@@ -15,37 +15,47 @@
   border-width: 6px;
   border-color: black;
   border-style: solid;
-  padding: 80px;
-  width: 20%;
+  padding: 30px;
+  width: 30%;
   border-radius: 50px;
 }
 .home-profile {
   font-size: 18px;
 }
-.last-course {
+.welcomeTitle {
+  animation: title 3s infinite;
+  color: #907d56;
+}
+@keyframes title {
+  50% {
+    color: #fffdd0;
+  }
+}
+.course-control {
   border-width: 6px;
   border-color: black;
   border-style: solid;
   border-radius: 50px;
   background-color: #ffcc67;
-  padding: 80px;
-  height: auto;
-  width: 40%;
+  padding: 30px;
+  height: 17rem;
+  width: 50%;
 }
-.last-courseTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.course-control h1 {
+  text-align: center;
 }
-.last-courseList {
-  display: flex;
-  flex-direction: column;
-}
-.last-courseList a {
+.course-control a {
   padding: 15px;
   font-size: 19px;
   cursor: pointer;
 }
-.last-courseList a:hover {
+.course-control a:hover {
   color: rgb(197, 97, 3);
+}
+.courseList {
+  font-size: 20px;
+  padding: auto;
+}
+.courseList li {
+  padding: 5px;
 }

@@ -23,14 +23,18 @@ function Comment() {
       <div className='childCommentDiv'>
         <div className='childCommentDetail'>
           <div className='replyDiv'>
-            <div className='replyUser'>Reply as MosQyy</div>
-            <div className='replyForm'>
-              <textarea
-                type='text'
-                placeholder='Type Here!'
-                className='inputReply'
-              />
-              <button className='replyButton'>Submit</button>
+            <div className='replyControl'>
+              <div className='replyUser'>Reply as MosQyy</div>
+              <div className='replyForm'>
+                <textarea
+                  type='text'
+                  placeholder='Type Here!'
+                  className='inputReply'
+                />
+                <div className='replyButtonControl'>
+                  <button className='replyButton'>Submit</button>
+                </div>
+              </div>
             </div>
           </div>
           <h1>All Replies</h1>

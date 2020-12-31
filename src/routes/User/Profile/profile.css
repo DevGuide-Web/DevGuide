@@ -1,11 +1,7 @@
 .profile-page {
   display: flex;
-  flex-direction: column;
-  height: 65vh;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  margin-top: 100px;
 }
 .profile-content {
   display: flex;
@@ -14,6 +10,8 @@
   background-color: #ffcc67;
   border-color: black;
   border-style: solid;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   border-width: 6px;
   width: 50%;
   border-radius: 50px;

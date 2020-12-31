@@ -1,7 +1,6 @@
 import {
     LOGIN_FAILED,
-    LOGIN_SEND,
-    LOGIN_SUCCESS
+    LOGIN_SEND
   } from './loginTypes'
   
   const initialState = {
@@ -14,11 +13,6 @@ import {
       case LOGIN_SEND:
         return {
           data: action.payload,
-          error: ''
-        }
-      case LOGIN_SUCCESS:
-        return {
-          data: JSON.parse(localStorage.getItem('Authorization')),
           error: ''
         }
       case LOGIN_FAILED:

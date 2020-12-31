@@ -1,10 +1,10 @@
-import { LOGIN_SEND, LOGIN_FAILED, LOGIN_SUCCESS } from "./loginTypes";
+import { LOGIN_SEND, LOGIN_FAILED } from "./loginTypes";
 import axios from "axios";
 
 export const fetchLogin = (email, password) => {
   return (dispatch) => {
     axios
-      .post("https://api.devguide.site/account/login/", {
+      .post("https://devguide.site/api/account/login/", {
         email,
         password,
       })
@@ -27,23 +27,10 @@ export const fetchLogin = (email, password) => {
   };
 };
 
-export const assignLocalstorage = () =>{
-  return (dispatch) => {
-    dispatch(loginSucces())
-  }
-}
-
 export const loginSend = (data) => {
   return {
     type: LOGIN_SEND,
     payload: data,
-  };
-};
-
-export const loginSucces = () => {
-  return {
-    type: LOGIN_SUCCESS,
-    payload: JSON.parse(localStorage.getItem('Authorization')),
   };
 };
 

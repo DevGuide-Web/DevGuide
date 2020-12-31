@@ -1,6 +1,5 @@
 {
   "name": "front-end",
-  "homepage": "http://devguide.site",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

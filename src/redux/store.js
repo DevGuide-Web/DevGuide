@@ -5,7 +5,13 @@ import thunk from 'redux-thunk';
 
 import rootReducer from './rootReducer';
 
-const initialState = {"login": {data: localStorage.getItem('Authorization') ? JSON.parse(localStorage.getItem('Authorization')) : {}} }
+const initialState = {
+  login: {
+    data: localStorage.getItem('Authorization')
+      ? JSON.parse(localStorage.getItem('Authorization'))
+      : {},
+  },
+};
 
 const store = createStore(
   rootReducer,

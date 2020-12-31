@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchLearning = (headers) => {
   return (dispatch) => {
     axios
-      .get("https://api.devguide.site/courses/", {
+      .get("https://devguide.site/api/courses/", {
         headers: {
           Authorization: headers,
         },

@@ -278,11 +278,11 @@ function Questioner() {
                 />
               </div>
             </div>
-          </div>
-          <div className='feedback-button'>
-            <button className='feedButton' onClick={submitFeed}>
-              Submit
-            </button>
+            <div className='feedback-button'>
+              <button className='feedButton' onClick={submitFeed}>
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
