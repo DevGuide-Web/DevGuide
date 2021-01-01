@@ -1,3 +1,26 @@
+# Special Hint HowTo
+
+# Web Development  <-- Learning Path
+## Front-End Developer  <-- Subtitle 1
+### Networking <-- Subtitle 2
+This part will cover about the basics about how internet works and studying about 
+HTTP which is used worldwide. There's also some example about how to host your 
+website to a server.
+#### Basics <-- Subtitle 3
+This part will explain about the basics of how networking works. It will cover 
+about network topologies, OSI model, the TCP/IP model, and many more.
+[Link](https://www.geeksforgeeks.org/basics-computer-networking/)
+ - Basics (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#basics) <-- Subtitle 4 & Subject Models & Article
+ - Data Link Layer (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#dll)
+ - Network Layer (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#nl)
+ - Transport Layer (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#tl)
+ - Application Layer (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#al)
+ - Network Security and Cryptography (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#nsc)
+ - Compression Techniques (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#ct)
+ - Network Experiments (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#ne)
+ - Devices (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#devices)
+ - Misc (https://www.geeksforgeeks.org/computer-network-tutorials/?ref=lbp#)
+
 # Summing Up All Materials
 
 # Mobile Programming
