@@ -31,3 +31,8 @@ This DevGuide project is our effort to eliminate these problem. Our project plan
 [Deployment Link](https://devguide.site/)  
 *Note: Apabila tidak bisa dibuka, bisa dicoba menggunakan Incognito/Private Browsing
 
+Source Code
+ - [Frontend](https://github.com/DevGuide-Web/DevGuide/tree/frontend)
+ - [Backend & Materi](https://github.com/DevGuide-Web/DevGuide/tree/backend)
+
+[Group Report](https://github.com/DevGuide-Web/DevGuide/blob/main/GroupReport.pdf)
