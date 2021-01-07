@@ -137,7 +137,7 @@ def HomePage(request):
     if request.method == "GET":
         log = appLog.objects.create(user_id=Account, activity="Access Home Page")
         log.save()
-        sub_title4 = SubTitle4.objects.order_by('-date_created')[:10]
+        sub_title4 = SubTitle4.objects.order_by('-date_created')[:5]
         serializer = HomeSerializer(sub_title4, many=True)
         return Response(serializer.data)
 

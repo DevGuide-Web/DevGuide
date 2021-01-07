@@ -39,7 +39,7 @@ def login_view(request):
 		data = {}
 		serializer = LoginSerializer(data=request.data)
 		if serializer.is_valid():
-			email = serializer.data['email']
+			email = serializer.data['email'].lower()
 			password = serializer.data['password']
 			account = authenticate(email=email, password=password)
 			if account:
@@ -92,7 +92,7 @@ def Biodata_view(request):
 			bio.save()
 			log = appLog.objects.create(user_id=UserAcc, activity=f"{UserAcc} updated biodata")
 			log.save()
-			return Response({"status" : "Biodata update success"})
+			return Response({"status_biodata" : "Biodata update success"})
 		return Response(serializer.errors)
 
 @api_view(['POST', ])
@@ -134,16 +134,18 @@ def changePassword(request):
 			password = serializer.data["password"]
 			repassword = serializer.data["repassword"]
 			if password != repassword:
-				data["Error Messages"] = "Password not Match"
+				data["Error"] = "Password not Match"
 				# return Response(serializers.ValidationError({"Error Messages": "Password not Match"}))
 				return Response(data)
 			if user.check_password(serializer.data["old_password"]):
 				user.set_password(serializer.data["password"])
 				user.save()
-				data["status"] = "Password changed succesfully"
+				data["status_password"] = "Password changed succesfully"
 				log = appLog.objects.create(user_id=user, activity=f"{user} change password")
 				log.save()
 				return Response(data)
+			else :
+				return Response({"Error": "Wrong Password"})
 		else:
 			return Response(serializer.errors)
 

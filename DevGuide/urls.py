@@ -10,5 +10,5 @@ urlpatterns = [
     path('admin/', include('adminUser.urls')),
     path('comment/', include('Comment.urls')),
     path('home/', HomePage),
-    path('utils/', include('Utils.urls'))
+    path('utils/', include('Utils.urls')),
 ]

@@ -70,15 +70,8 @@ def AddSubComment(request, commentID):
         log = appLog.objects.create(user_id=Account, activity=f"Access Sub comment with a comment ID {commentID}")
         log.save()
         comment = commentTitle.objects.get(id=commentID)
-        print(comment)
-        commentSerializer=commentTitleSerializerGet(comment)
         SubComment = commentSubTitle.objects.filter(comment=comment).order_by('-DateTime')
-        subCommentserializer = subCommentTitleSerializerGet(SubComment, many=True)
-        data={
-            "comment":commentSerializer,
-            "sub_comment": subCommentserializer
-        }
-        serializer = combineSerializer(data)
+        serializer = subCommentTitleSerializerGet(SubComment, many=True)
         return Response(serializer.data)
     
     if request.method == 'POST':

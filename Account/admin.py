@@ -12,7 +12,7 @@ class AccountAdmin(UserAdmin):
     filter_horizontal = ()
     list_filter = ()
     fieldsets = ()
-    ordering = ('email',)
+    ordering = ()
 
 
 admin.site.register(Acc, AccountAdmin)
