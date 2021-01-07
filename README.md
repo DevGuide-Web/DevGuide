@@ -26,3 +26,8 @@ This DevGuide project is our effort to eliminate these problem. Our project plan
 - Akbar Maulana Alfatih ([@MosQyy](https://www.github.com/MosQyy) / 1313619003)
 - Farhan Dewanta Syahputra ([@Supiraru](https://www.github.com/Supiraru) / 1313619017)
 - Mochammad Hanif Ramadhan ([@etrnal70](https://www.github.com/etrnal70) / 1313619025)
+
+# Group Report
+[Deployment Link](https://devguide.site/)  
+*Note: Apabila tidak bisa dibuka, bisa dicoba menggunakan Incognito/Private Browsing
+
