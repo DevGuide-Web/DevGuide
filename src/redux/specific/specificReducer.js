@@ -1,29 +1,24 @@
 import {
-    LOGIN_FAILED,
-    LOGIN_SEND,
-    LOGOUT
-  } from './loginTypes'
+    SPECIFIC_FAILED,
+    SPECIFIC_SUCCESS
+  } from './specificTypes'
   
   const initialState = {
     data: [],
     error: ''
   }
   
-  const loginReducer = (state = initialState, action) => {
+  const specificReducer = (state = initialState, action) => {
     switch (action.type) {
-      case LOGIN_SEND:
+      case SPECIFIC_SUCCESS:
         return {
           data: action.payload,
           error: ''
         }
-      case LOGIN_FAILED:
+      case SPECIFIC_FAILED:
         return {
           data: [],
           error: action.payload
-        }
-      case LOGOUT:
-        return{
-          data:[]
         }
       default: return state
     }
@@ -31,5 +26,5 @@ import {
   
 
 
-  export default loginReducer
+  export default specificReducer
   

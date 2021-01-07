@@ -1,40 +1,45 @@
-import { POST_COMMENT_SUCCESS, POST_COMMENT_FAILED } from './postSubCommentTypes'
-import axios from 'axios'
+import {
+  POST_SUBCOMMENT_SUCCESS,
+  POST_SUBCOMMENT_FAILED,
+} from "./postSubCommentTypes";
+import axios from "axios";
 
-export const fetchPostComment = (slug, headers, title, detail) => {
-    return (dispatch) => {
-      axios
-        .post(`https://devguide.site/api/comment/${slug.subject}/`,{
-        Title: title,
-        detail
-        }, {
-            headers: {
-              Authorization: headers,
-            },
-          })
-        .then(response => {
-          // response.data is the users
-          const postComments = response.data
-          dispatch(postCommentSuccess(postComments))
-        })
-        .catch(error => {
-          // error.message is the error message
-          dispatch(postCommentFailure(error.message))
-        })
-    }
-  }
+export const fetchPostSubComment = (id, headers, detail) => {
+  return (dispatch) => {
+    axios
+      .post(
+        `https://api.devguide.site/comment/subcomment/${id}/`,
+        {
+          detail,
+        },
+        {
+          headers: {
+            Authorization: headers,
+          },
+        }
+      )
+      .then((response) => {
+        // response.data is the users
+        const postSubComments = response.data;
+        dispatch(postSubCommentSuccess(postSubComments));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(postSubCommentFailure(error.message));
+      });
+  };
+};
 
-
-export const postCommentSuccess = data => {
+export const postSubCommentSuccess = (data) => {
   return {
-    type: POST_COMMENT_SUCCESS,
-    payload: data
-  }
-}
+    type: POST_SUBCOMMENT_SUCCESS,
+    payload: data,
+  };
+};
 
-export const postCommentFailure = error => {
-    return {
-      type: POST_COMMENT_FAILED,
-      payload: error
-    }
-  }
+export const postSubCommentFailure = (error) => {
+  return {
+    type: POST_SUBCOMMENT_FAILED,
+    payload: error,
+  };
+};

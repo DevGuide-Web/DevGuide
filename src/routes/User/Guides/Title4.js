@@ -21,7 +21,7 @@ function Title4({ data, userData, fetchTitle4, match }) {
           </div>
           <IconContext.Provider value={{ size: "40px" }}>
             <div className="guides-detail">
-              {data.data.map((item, index) => (
+              {data.data && data.data.length > 0 ? data.data.map((item, index) => (
                 <React.Fragment key={index}>
                   <Link
                     to={`/guides/${item.learning_path_slug}/${item.sub_title1_slug}/${item.sub_title2_slug}/${item.sub_title3_slug}/${item.slug}`}
@@ -34,7 +34,11 @@ function Title4({ data, userData, fetchTitle4, match }) {
                     </div>
                   )}
                 </React.Fragment>
-              ))}
+              )):<React.Fragment>
+              <div className="guidesTitleDetail">
+                <h4>Coming Soon</h4>
+              </div>
+            </React.Fragment>}
             </div>
           </IconContext.Provider>
         </div>

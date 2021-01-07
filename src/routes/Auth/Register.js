@@ -9,10 +9,11 @@ function Register({ data, fetchRegister, history }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
-  const { status } = data;
+  const { status } = data.data;
 
   useEffect(() => {
     if (status) {
+      alert("Account has been registered")
       history.push("/login");
     }
   }, [history, status]);
@@ -27,7 +28,7 @@ function Register({ data, fetchRegister, history }) {
         </Link>
         <br></br>
         <br></br>
-        {data.username && <h1>{data.username}</h1>}
+        {data.data.username && <h1>{data.data.username}</h1>}
         <input
           type="text"
           className="crusialInput"
@@ -38,7 +39,7 @@ function Register({ data, fetchRegister, history }) {
         />
         <br></br>
         <br></br>
-        {data.email && <h1>{data.email}</h1>}
+        {data.data.email && <h1>{data.data.email}</h1>}
         <input
           type="text"
           className="crusialInput"
@@ -49,7 +50,7 @@ function Register({ data, fetchRegister, history }) {
         />
         <br></br>
         <br></br>
-        {data.password && <h1>{data.password}</h1>}
+        {data.data.password && <h1>{data.data.password}</h1>}
         <input
           type="password"
           className="crusialInput"
@@ -60,7 +61,7 @@ function Register({ data, fetchRegister, history }) {
         ></input>
         <br></br>
         <br></br>
-        {data.repassword && <h1>{data.repassword}</h1>}
+        {data.data.repassword && <h1>{data.data.repassword}</h1>}
         <input
           type="password"
           className="crusialInput"
@@ -89,7 +90,7 @@ function Register({ data, fetchRegister, history }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.register.data,
+    data: state.register,
   };
 };
 

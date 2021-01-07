@@ -4,7 +4,7 @@ import axios from 'axios'
 export const fetchComment = (slug, headers) => {
     return (dispatch) => {
       axios
-        .get(`https://devguide.site/api/comment/${slug.subject}/`, {
+        .get(`https://api.devguide.site/comment/${slug.subject}/`, {
             headers: {
               Authorization: headers,
             },

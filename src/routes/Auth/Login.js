@@ -7,8 +7,8 @@ import "../Auth/auth.css";
 function Login({ data, fetchLogin, history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [note, setNote] = useState(false)
-  const {token} = data
+  const [note, setNote] = useState(false);
+  const { token } = data.data;
 
   useEffect(() => {
     if(token){
@@ -29,8 +29,8 @@ function Login({ data, fetchLogin, history }) {
         <Link to="/">
           <button className="crusialButton">Back</button>
         </Link>
-        {data.response && <h1>{data.response}</h1>}
-        {data.email && <h1>{data.email}</h1>}
+        {data.data.response && <h1>{data.data.response}</h1>}
+        {data.data.email && <h1>{data.email}</h1>}
         {note && <h1>please fill the field below!</h1>}
         <br></br>
         <br></br>
@@ -72,7 +72,7 @@ function Login({ data, fetchLogin, history }) {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.login.data,
+    data: state.login,
   };
 };
 

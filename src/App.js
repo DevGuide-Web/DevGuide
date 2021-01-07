@@ -1,7 +1,6 @@
 import "./App.css";
-import React, { useState, useContext } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProtectedRoute from "./routes/Auth/ProtectedRoute";
 import DevGuide from "./template/DevGuide";
 import Login from "./routes/Auth/Login";
 import Register from "./routes/Auth/Register";
@@ -11,7 +10,6 @@ import Guides from "./routes/User/Guides/Guides";
 import Home from "./routes/User/Home/Home";
 import Profile from "./routes/User/Profile/Profile";
 import EditProfile from "./routes/User/Profile/Edit/EditProfile";
-import Suggest from "./routes/User/Suggest/Suggest";
 import Questioner from "./routes/User/Questioner/Questioner";
 import Redirect from "./routes/Auth/Redirect";
 import Title1 from "./routes/User/Guides/Title1";
@@ -20,7 +18,6 @@ import Title3 from "./routes/User/Guides/Title3";
 import Title4 from "./routes/User/Guides/Title4";
 import Subject from "./routes/User/Guides/Course/Subject";
 import Comment from "./routes/User/Guides/Course/Comment";
-import Test from "./routes/Test";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 

@@ -22,7 +22,7 @@ function Title1({ data, userData, fetchTitle1, match }) {
           </div>
           <IconContext.Provider value={{ size: "30px" }}>
             <div className="guides-detail">
-              {data.data.map((item, index) => (
+              {data.data && data.data.length > 0 ? data.data.map((item, index) => (
                 <React.Fragment key={index}>
                   <Link to={`/guides/${item.learning_path_slug}/${item.slug}`}>
                     <button className="crusialButton">{item.Title}</button>
@@ -31,7 +31,11 @@ function Title1({ data, userData, fetchTitle1, match }) {
                     <h4>{item.details}</h4>
                   </div>
                 </React.Fragment>
-              ))}
+              )) : <React.Fragment>
+              <div className="guidesTitleDetail">
+                <h4>Coming Soon</h4>
+              </div>
+            </React.Fragment>}
             </div>
           </IconContext.Provider>
         </div>

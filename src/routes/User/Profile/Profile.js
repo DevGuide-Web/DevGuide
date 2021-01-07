@@ -3,34 +3,14 @@ import NavBar from '../../NavBar/NavBar';
 import { Link, withRouter } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import './profile.css';
-import Axios from 'axios';
+import {fetchGetProfile} from  "../../../redux/";
+import { connect } from "react-redux";
 
-function Profile() {
-  const [fullname, getFullname] = useState('');
-  const [username, getUsername] = useState('');
-  const [email, getEmail] = useState('');
-  const [interest, getInterest] = useState('');
+function Profile({ data, userData, fetchGetProfile }) {
 
-  const [logOut, setLogOut] = useState('');
-
-  const goLogOut = () => {
-    if (localStorage.getItem('Authorization')) {
-      localStorage.clear();
-      setLogOut('/');
-    }
-  };
 
   useEffect(() => {
-    Axios.get('http://www.devguide.site/api/account/biodata/', {
-      headers: {
-        Authorization: localStorage.getItem('Authorization'),
-      },
-    }).then(response => {
-      getFullname(response.data.fullname);
-      getUsername(response.data.username);
-      getEmail(response.data.email);
-      getInterest(response.data.interest);
-    });
+    fetchGetProfile(userData.data.Authorization)
   }, []);
 
   return (
@@ -41,10 +21,10 @@ function Profile() {
           <div className='profile-content'>
             <h1>User Info</h1>
             <div className='profile-detail'>
-              <h3>Fullname : {fullname}</h3>
-              <h3>Username : {username}</h3>
-              <h3>Email : {email}</h3>
-              <h3>Interest : {interest}</h3>
+              <h3>Fullname : {data.data.fullname}</h3>
+              <h3>Username : {data.data.username}</h3>
+              <h3>Email : {data.data.email}</h3>
+              <h3>Interest : {data.data.interest}</h3>
               <div className='profile-function'>
                 <Link to='/profile/edit'>
                   <button className='crusialButton'>Edit Profile</button>
@@ -54,8 +34,8 @@ function Profile() {
                   <button className='crusialButton'>Change Password</button>
                 </Link>
                 <br></br>
-                <Link to={logOut}>
-                  <button className='LogOutButton' onClick={goLogOut}>
+                <Link to='/'>
+                  <button className='LogOutButton'>
                     Log Out
                   </button>
                 </Link>
@@ -68,4 +48,18 @@ function Profile() {
   );
 }
 
-export default withRouter(Profile);
+const mapStateToProps = (state) => {
+  return {
+    data: state.profile,
+    userData: state.login
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchGetProfile: (headers) => dispatch(fetchGetProfile(headers)),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -1,29 +1,24 @@
 import {
-    LOGIN_FAILED,
-    LOGIN_SEND,
-    LOGOUT
-  } from './loginTypes'
+    QUESTIONER_FAILED,
+    QUESTIONER_SEND
+  } from './questionerTypes'
   
   const initialState = {
     data: [],
     error: ''
   }
   
-  const loginReducer = (state = initialState, action) => {
+  const questionerReducer = (state = initialState, action) => {
     switch (action.type) {
-      case LOGIN_SEND:
+      case QUESTIONER_SEND:
         return {
           data: action.payload,
           error: ''
         }
-      case LOGIN_FAILED:
+      case QUESTIONER_FAILED:
         return {
           data: [],
           error: action.payload
-        }
-      case LOGOUT:
-        return{
-          data:[]
         }
       default: return state
     }
@@ -31,5 +26,5 @@ import {
   
 
 
-  export default loginReducer
+  export default questionerReducer
   

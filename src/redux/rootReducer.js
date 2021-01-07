@@ -10,6 +10,12 @@ import subjectReducer from './subject/subjectReducer'
 import commentReducer from './comment/commentReducer'
 import postCommentReducer from './postComment/postCommentReducer'
 import subCommentReducer from './subComment/subCommentReducer'
+import profileReducer from './profile/profileReducer'
+import postProfileReducer from './postProfile/postProfileReducer'
+import postSubCommentReducer from './postSubComment/postSubCommentReducer'
+import specificReducer from './specific/specificReducer'
+import homeReducer from './home/homeReducer'
+import questionerReducer from './questioner/questionerReducer'
 
 
 const rootReducer = combineReducers({
@@ -24,8 +30,12 @@ const rootReducer = combineReducers({
   comment: commentReducer,
   post_comment: postCommentReducer,
   subcomment: subCommentReducer,
-
-  
+  post_subcomment: postSubCommentReducer,
+  profile: profileReducer,
+  postProfile: postProfileReducer,
+  specific: specificReducer,
+  home: homeReducer,
+  questioner: questionerReducer
 })
 
 export default rootReducer

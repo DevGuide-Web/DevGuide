@@ -1,57 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import NavBar from '../../.././NavBar/NavBar';
 import { Link, withRouter } from 'react-router-dom';
 import './editprofile.css';
 import * as BiIcons from 'react-icons/bi';
+import { fetchPostProfile } from "../../../../redux/";
 import { IconContext } from 'react-icons';
+import { connect } from "react-redux";
 
-function EditProfile() {
-  const [fullname, setFullname] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [interest, setInterest] = useState('');
+
+function EditProfile({userData, data, fetchPostProfile, history }) {
+
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [interest, setInterest] = useState("");
+  const { Error, status_biodata } = data.data;
+  
+
+  useEffect(() => {
+    if (status_biodata) {
+      history.push("/profile");
+      window.location.reload()
+    }
+  }, [history, status_biodata]);
 
   const confirmEdit = () => {
-    Axios.post(
-      'http://www.devguide.site/api/account/biodata/',
-      {
-        fullname: fullname,
-        username: username,
-        email: email,
-        interest: interest,
-      },
-      {
-        headers: {
-          Authorization: localStorage.getItem('Authorization'),
-        },
-      }
-    ).then(response => {
-      const fullnameChecker = response.data.fullname;
-      const usernameChecker = response.data.username;
-      const emailChecker = response.data.email;
-      const interestChecker = response.data.interest;
-      const checkError = response.data.Error;
-      const statusChecker = response.data.status;
-      if (fullnameChecker) {
-        alert('Enter Correct Fullname');
-      }
-      if (usernameChecker) {
-        alert('Enter Correct Username');
-      }
-      if (emailChecker) {
-        alert('Enter Correct Email');
-      }
-      if (interestChecker) {
-        alert('Enter Correct Interest');
-      }
-      if (statusChecker) {
-        alert('Successfully Updatted');
-      }
-      if (checkError) {
-        alert(checkError);
-      }
-    });
+    fetchPostProfile(userData.data.Authorization, email, username, fullname, interest)
   };
 
   return (
@@ -64,8 +39,10 @@ function EditProfile() {
               <button className='crusialButton'>Back</button>
             </Link>
             <div className='editprofile-detail'>
+              {Error && <h4>{Error}</h4>}
               <BiIcons.BiUserCircle />
               <h3>Fullname</h3>
+              {data.data.fullname && <h4>{data.data.fullname}</h4>}
               <input
                 type='text'
                 placeholder='Type Here!'
@@ -75,6 +52,7 @@ function EditProfile() {
                 }}
               ></input>
               <h3>Username</h3>
+              {data.data.username && <h4>{data.data.username}</h4>}
               <input
                 type='text'
                 placeholder='Type Here!'
@@ -84,6 +62,7 @@ function EditProfile() {
                 }}
               ></input>
               <h3>Email</h3>
+              {data.data.email && <h4>{data.data.email}</h4>}
               <input
                 type='text'
                 placeholder='Type Here!'
@@ -93,6 +72,7 @@ function EditProfile() {
                 }}
               ></input>
               <h3>Interest</h3>
+              {data.data.interest && <h4>{data.data.interest}</h4>}
               <input
                 type='text'
                 placeholder='Type Here!'
@@ -114,4 +94,17 @@ function EditProfile() {
   );
 }
 
-export default withRouter(EditProfile);
+const mapStateToProps = (state) => {
+  return {
+    data: state.postProfile,
+    userData: state.login
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPostProfile: (headers, email, username, fullname, interest) => dispatch(fetchPostProfile(headers, email, username, fullname, interest)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile);

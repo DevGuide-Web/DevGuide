@@ -1,21 +1,21 @@
 import {
-  POST_SUBCOMMENT_FAILED,
-  POST_SUBCOMMENT_SUCCESS
-} from './postSubCommentTypes'
+  POST_PROFILE_FAILED,
+  POST_PROFILE_SUCCESS
+} from './postProfileTypes'
 
 const initialState = {
   data: [],
   error: ''
 }
 
-const postSubCommentReducer = (state = initialState, action) => {
+const postProfileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case POST_SUBCOMMENT_SUCCESS:
+    case POST_PROFILE_SUCCESS:
       return {
         data: action.payload,
         error: ''
       }
-    case POST_SUBCOMMENT_FAILED:
+    case POST_PROFILE_FAILED:
       return {
         data: [],
         error: action.payload
@@ -26,4 +26,4 @@ const postSubCommentReducer = (state = initialState, action) => {
 
 
 
-export default postSubCommentReducer
+export default postProfileReducer

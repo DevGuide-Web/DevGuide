@@ -6,7 +6,7 @@ import axios from 'axios'
 export const fetchTitle1 = (slug, headers) => {
     return (dispatch) => {
       axios
-        .get(`https://devguide.site/api/courses/${slug.id}/`, {
+        .get(`https://api.devguide.site/courses/${slug.id}/`, {
             headers: {
               Authorization: headers,
             },

@@ -18,7 +18,7 @@ function Guides({ data, userData, fetchLearning }) {
             <h1>Developer Roadmaps</h1>
           </div>
           <div className="guides-detail">
-            {data.data.map((item, index) => (
+            {data.data && data.data ? data.data.map((item, index) => (
               <React.Fragment key={index}>
                 <Link to={`/guides/${item.slug}`}>
                   <button className="crusialButton">{item.Title}</button>
@@ -27,7 +27,12 @@ function Guides({ data, userData, fetchLearning }) {
                   <h4>{item.details}</h4>
                 </div>
               </React.Fragment>
-            ))}
+            )) : <React.Fragment>
+              <button className="crusialButton">Coming Soon</button>
+            <div className="guidesTitleDetail">
+              <h4>Coming Soon</h4>
+            </div>
+          </React.Fragment>}
           </div>
         </div>
       </div>

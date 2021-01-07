@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import NavBar from "../../NavBar/NavBar";
 import { IconContext } from "react-icons";
-import * as RiIcons from "react-icons/ri";
-import { Link, withRouter } from "react-router-dom";
+import { Link} from "react-router-dom";
 import "./guides.css";
 import { fetchTitle2 } from "../../../redux/";
 import { connect } from "react-redux";
@@ -21,7 +20,7 @@ function Title2({ data, userData, fetchTitle2, match }) {
           </div>
           <IconContext.Provider value={{ size: "30px" }}>
             <div className="guides-detail">
-              {data.data.map((item, index) => (
+              {data.data && data.data.length > 0 ? data.data.map((item, index) => (
                 <React.Fragment key={index}>
                   <Link
                     to={`/guides/${item.learning_path_slug}/${item.sub_title1_slug}/${item.slug}`}
@@ -32,7 +31,11 @@ function Title2({ data, userData, fetchTitle2, match }) {
                     <h4>{item.details}</h4>
                   </div>
                 </React.Fragment>
-              ))}
+              )): <React.Fragment>
+              <div className="guidesTitleDetail">
+                <h4>Coming Soon</h4>
+              </div>
+            </React.Fragment>}
             </div>
           </IconContext.Provider>
         </div>

@@ -48,6 +48,8 @@
   padding: 15px;
   font-size: 19px;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 .course-control a:hover {
   color: rgb(197, 97, 3);

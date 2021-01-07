@@ -32,6 +32,7 @@ function Subject({
     if (!title || !detail) {
       return setNote(true);
     }
+    window.location.reload()
     return fetchPostComment(
       match.params,
       userData.data.Authorization,
@@ -45,8 +46,8 @@ function Subject({
       <NavBar />
       <div className='courseDiv'>
         <div className='courseDetail'>
-          <div className='courseTitle'>{dataSubject.data.title}</div>
-          <div className='subDetailTitle'>{dataSubject.data.detail}</div>
+          <div className='courseTitle'>{dataSubject.data.title ? dataSubject.data.title : "Coming Soon"}</div>
+          <div className='subDetailTitle'>{dataSubject.data.detail ? dataSubject.data.detail : "Coming Soon"}</div>
           <div className='subDetail'>
             {dataSubject.data.article_url && (
               <div className='articleDiv'>
@@ -93,6 +94,7 @@ function Subject({
               <div className='questionControl'>
                 <h3>Post your questions down below!</h3>
                 <div className='questionForm'>
+                {note && <h4>please fill the field below!</h4>}
                   <input
                     type='text'
                     placeholder='Title'
@@ -120,10 +122,10 @@ function Subject({
             <div className='commentDiv'>
               <div className='commentDetail'>
                 <h1>All Comment</h1>
-                {dataComment.data.map(comment => (
+                {dataComment.data.length > 0 ? dataComment.data.map(comment => (
                   <div className='commentComponent' key={comment.id}>
                     <div className='commentHeader'>
-                      <h2>{comment.username}</h2>
+                      <h2>by {comment.username}</h2>
                       <h4>Date : {comment.DateTime}</h4>
                     </div>
                     <div className='commentContent'>
@@ -133,7 +135,11 @@ function Subject({
                       <p className='commentDesc'>{comment.detail}</p>
                     </div>
                   </div>
-                ))}
+                )): <div className='commentComponent'>
+                <div className='commentContent'>
+                    <h3 className='commentTitle'>There is no comment yet.</h3>
+                </div>
+              </div> }
               </div>
             </div>
           </div>

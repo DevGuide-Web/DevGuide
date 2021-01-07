@@ -1,10 +1,13 @@
 import { SUBCOMMENT_SUCCESS, SUBCOMMENT_FAILED } from './subCommentTypes'
 import axios from 'axios'
 
+
+
+
 export const fetchSubComment = (id, headers) => {
     return (dispatch) => {
       axios
-        .get(`https://devguide.site/api/comment/subcomment/${id}/`, {
+        .get(`https://api.devguide.site/comment/subcomment/${id}/`, {
             headers: {
               Authorization: headers,
             },
