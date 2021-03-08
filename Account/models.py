@@ -61,12 +61,20 @@ class Acc(AbstractBaseUser):
 
 
 class Biodata(models.Model):
-	acc = models.OneToOneField(Acc, verbose_name='Account', on_delete=models.CASCADE)
-	fullname = models.CharField(max_length=100,verbose_name='Full Name', blank=True, null=True)
-	interest = models.TextField(verbose_name='User Interest', blank=True, null=True)
+    acc = models.OneToOneField(Acc, verbose_name='Account', on_delete=models.CASCADE)
+    fullname = models.CharField(max_length=100,verbose_name='Full Name', blank=True, null=True)
+    interest = models.TextField(verbose_name='User Interest', blank=True, null=True)
 
-	def __str__(self):
-		return self.acc.username
+    def __str__(self):
+        return self.acc.username
+		
+    def username(self):
+        return self.acc.username
+    username.short_description = 'username'
+    
+    def email(self):
+        return self.acc.email
+    email.short_description = 'email'
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):

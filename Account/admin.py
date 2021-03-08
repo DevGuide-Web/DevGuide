@@ -13,8 +13,16 @@ class AccountAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
     ordering = ()
+    
+class BiodataAdmin(UserAdmin):
+    list_display = ('pk', 'email', 'username','fullname','interest')
+
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+    ordering = ()
 
 
 admin.site.register(Acc, AccountAdmin)
 
-admin.site.register(Biodata)
+admin.site.register(Biodata, BiodataAdmin)

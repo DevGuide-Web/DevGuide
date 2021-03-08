@@ -14,6 +14,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import cast
 from decouple import config
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,8 +32,8 @@ DEBUG = config('DEBUG', cast=bool, default=True)
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "devguide.site",
-    "www.devguide.site"
+    "api.devguide.site",
+    "www.api.devguide.site"
 ]
     
 
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,7 +77,10 @@ AUTH_USER_MODEL = 'Account.Acc'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'staticfiles')
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,11 +102,11 @@ WSGI_APPLICATION = 'DevGuide.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('NAME'),
-        'HOST': config('HOST'),
-        'PORT': config('PORT'),
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
+        'NAME': 'devguide_core',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'devguide_admin',
+        'PASSWORD': 'zt16F9Agb_=^',
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
     }
 }
@@ -131,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Jakarta'
 
 USE_I18N = True
 
@@ -143,7 +148,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -152,17 +156,25 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-
+ 
+# MEDIA_URL = '/media/'
+ 
+ 
+# MEDIA_ROOT = '/home/websites/DevGuide/media/'
+ 
+ 
 STATIC_URL = '/static/'
- 
-MEDIA_URL = '/media/'
- 
-STATIC_ROOT = '/home/devguide/DevGuide/static/'
- 
-MEDIA_ROOT = '/home/websites/DevGuide/media/'
- 
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
