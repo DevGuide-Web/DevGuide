@@ -1,0 +1,11 @@
+asgiref==3.3.1
+Django==3.1.4
+django-annoying==0.10.6
+django-cors-headers==3.5.0
+djangorestframework==3.12.2
+mysqlclient==2.0.1
+python-decouple==3.3
+pytz==2020.4
+six==1.15.0
+sqlparse==0.4.1
+whitenoise==5.2.0
