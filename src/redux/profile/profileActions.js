@@ -4,7 +4,7 @@ import axios from 'axios'
 export const fetchGetProfile = (headers) => {
     return (dispatch) => {
       axios
-        .get(`https://api.devguide.site/account/biodata/`, {
+        .get(`https://127.0.0.1/account/biodata/`, {
             headers: {
               Authorization: headers,
             },

@@ -12,7 +12,7 @@ export const fetchQuestioner = (
   return (dispatch) => {
     axios
       .post(
-        "https://api.devguide.site/utils/kuesioner/",
+        "https://127.0.0.1/utils/kuesioner/",
         {
           pertanyaan_1: questionOne,
           pertanyaan_2: questionTwo,

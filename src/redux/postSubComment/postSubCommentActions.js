@@ -8,7 +8,7 @@ export const fetchPostSubComment = (id, headers, detail) => {
   return (dispatch) => {
     axios
       .post(
-        `https://api.devguide.site/comment/subcomment/${id}/`,
+        `https://127.0.0.1/comment/subcomment/${id}/`,
         {
           detail,
         },

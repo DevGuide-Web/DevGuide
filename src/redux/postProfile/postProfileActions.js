@@ -4,7 +4,7 @@ import axios from 'axios'
   export const fetchPostProfile = (headers, email, username, fullname, interest) => {
     return (dispatch) => {
       axios
-        .post(`https://api.devguide.site/account/biodata/`,{
+        .post(`https://127.0.0.1/account/biodata/`,{
           email,
           username,
           fullname,
@@ -30,7 +30,7 @@ import axios from 'axios'
   export const changePasswordProfile = (headers, old_password, password, repassword) => {
     return (dispatch) => {
       axios
-        .post(`https://api.devguide.site/account/changepassword/`,{
+        .post(`https://127.0.0.1/account/changepassword/`,{
           old_password,
           password,
           repassword

@@ -4,7 +4,7 @@ import axios from 'axios'
 export const fetchHome = (headers) => {
     return (dispatch) => {
       axios
-        .get(`https://api.devguide.site/home/`, {
+        .get(`https://127.0.0.1/home/`, {
             headers: {
               Authorization: headers,
             },

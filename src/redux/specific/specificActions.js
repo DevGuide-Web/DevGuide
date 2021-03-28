@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchSpecific = (id, headers) => {
   return (dispatch) => {
     axios
-      .get(`https://api.devguide.site/comment/specific/${id}/`, {
+      .get(`https://127.0.0.1/comment/specific/${id}/`, {
         headers: {
           Authorization: headers,
         },

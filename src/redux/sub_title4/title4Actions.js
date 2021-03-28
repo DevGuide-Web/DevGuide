@@ -4,7 +4,7 @@ import axios from 'axios'
 export const fetchTitle4 = (slug, headers) => {
     return (dispatch) => {
       axios
-        .get(`https://api.devguide.site/courses/${slug.id}/${slug.id2}/${slug.id3}/${slug.id4}/`, {
+        .get(`https://127.0.0.1/courses/${slug.id}/${slug.id2}/${slug.id3}/${slug.id4}/`, {
             headers: {
               Authorization: headers,
             },

@@ -7,7 +7,7 @@ import axios from 'axios'
 export const fetchSubComment = (id, headers) => {
     return (dispatch) => {
       axios
-        .get(`https://api.devguide.site/comment/subcomment/${id}/`, {
+        .get(`https://127.0.0.1/comment/subcomment/${id}/`, {
             headers: {
               Authorization: headers,
             },
