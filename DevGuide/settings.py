@@ -24,16 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = "c3+6ob$p-x3q_z#!m@z9u4%dia(v=bu5*^&b3o^@h@o=m@h6%j"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool, default=True)
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "api.devguide.site",
-    "www.api.devguide.site"
+    "*"
 ]
     
 
@@ -102,11 +99,11 @@ WSGI_APPLICATION = 'DevGuide.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'devguide_core',
+        'NAME': 'devguide',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        'USER': 'devguide_admin',
-        'PASSWORD': 'zt16F9Agb_=^',
+        'USER': 'supiraru',
+        'PASSWORD': 'Abc123de45',
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
     }
 }
